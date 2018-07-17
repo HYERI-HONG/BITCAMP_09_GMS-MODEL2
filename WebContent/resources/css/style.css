@@ -1,0 +1,17 @@
+
+	table,td,th,tr{
+	border: 1px solid black;
+	border-collapse:collapse;
+	text-align : center
+	}
+	.width-full{width:70%}
+	.height-full{height:500px}
+	.margin-auto{margin: 0 auto}
+	.width-part{width:50%}
+	.color-top{background-color:tomato}
+	.color-bottom{background-color:#ffb3b3}
+	/*main*/
+	#img-size{width:500px; height:315px}
+	#color-background{background-color: white}
+	/*user,admin*/
+	#form-style{border:1px solid black; width: 300px; margin : 0 auto}
