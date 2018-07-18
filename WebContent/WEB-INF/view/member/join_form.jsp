@@ -24,8 +24,8 @@
 	SSN : <br>
 	<input type="text" name ="ssn" />
 	<br><br>
-	<input type="hidden" name="action" value="move" />
-	<input type="hidden" name="page" value="join_result" />
+	<input type="hidden" name="action" value="join" />
+	<input type="hidden" name="page" value="join_result"/>
 	<input type="submit" value = "등록" />	
 	</form>
 </body>

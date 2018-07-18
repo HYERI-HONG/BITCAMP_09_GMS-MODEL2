@@ -12,7 +12,7 @@
 	<input type="text" name="userid"/>
 	<br><br>
 	<input type="hidden" name="page" value="one_member_list_result" />
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="searchMemberById" />
 	<input type="submit" value="검색" />
 </form>
 </body>

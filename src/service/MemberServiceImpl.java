@@ -59,7 +59,7 @@ public class MemberServiceImpl implements MemberService {
 		String todayDay = today.split("/")[2];
 		
 		String birthYear = member.getSsn().substring(0,2);
-		String birthMonth =member.getSsn().substring(2,4);
+		String birthMonth = member.getSsn().substring(2,4);
 		String birthDay = member.getSsn().substring(4,6);
 		
 		if(Integer.parseInt(birthYear)>18&&Integer.parseInt(birthYear)<=99) {

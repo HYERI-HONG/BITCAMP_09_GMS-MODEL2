@@ -13,13 +13,13 @@
 <h2 align="center">UserLogin Page</h2>
 <form action="<%=ctx%>/member.do" id="form-style">
 	ID :<br>
-	<input type="text" name="ID"/>
+	<input type="text" name="userid"/>
 	<br>
 	Password :<br>
-	<input type="text" name="Password"/>
+	<input type="text" name="password"/>
 	<br><br>
 	<input type="hidden" name="page" value="user_login_result" />
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="login" />
 	<input type="submit" value="전송" />
 </form>
 </body>

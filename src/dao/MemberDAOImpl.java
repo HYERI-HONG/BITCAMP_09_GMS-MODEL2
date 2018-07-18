@@ -144,7 +144,6 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void deleteMember(MemberBean member) {
 		try {
-			System.out.println("====\n"+String.format(MemberQuery.DELETE.toString(), member.getUserId(),member.getPassword()));
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()

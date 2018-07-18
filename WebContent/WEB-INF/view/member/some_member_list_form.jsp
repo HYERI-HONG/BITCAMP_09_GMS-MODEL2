@@ -13,7 +13,7 @@
 	<br><br>
 	<input type="submit" value="검색" />
 	<input type="hidden" name="page" value="some_member_list_result" />
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="searchMemberByTeam" />
 </form>
 </body>
 </html>

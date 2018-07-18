@@ -20,7 +20,7 @@
 	<input type="text" name="after_pass" />
 	<br><br>
 	<input type="hidden" name="page" value="update_result" />
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value=memberUpdate />
 	<input type="submit" value ="변경" />
 	</form>
 </body>
