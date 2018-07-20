@@ -1,16 +1,11 @@
 package command;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class Sentry {
 	public static Command cmd=new Command();
-	public static void init(HttpServletRequest request) {
-		String servletPath= request.getServletPath();
-		System.out.println("센트리 :"+servletPath.substring(1,servletPath.indexOf(".")));
-		cmd = Commander.order(
-				servletPath.substring(1,servletPath.indexOf(".")),
-				request.getParameter("action"),
-				request.getParameter("page"));
-
+	public static void init(HttpServletRequest request, HttpServletResponse response) {
+		cmd = Commander.order(request, response);
 	}
 }

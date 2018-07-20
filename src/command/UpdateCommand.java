@@ -1,13 +1,13 @@
 package command;
 
 import javax.servlet.http.HttpServletRequest;
+
 import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class CreateCommand extends Command{
-	//생성자
-	public CreateCommand(HttpServletRequest request) {
+public class UpdateCommand extends Command {
+	public UpdateCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -18,20 +18,16 @@ public class CreateCommand extends Command{
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("-----------create command--------------");
-			MemberBean member = new MemberBean();
+			System.out.println("-----------update command--------------");
+			MemberBean member =new MemberBean();
 			member.setUserId(request.getParameter("userid"));
-			member.setPassword(request.getParameter("password"));
-			member.setName(request.getParameter("name"));
-			member.setSsn(request.getParameter("ssn"));
-			MemberServiceImpl.getInstance().createMember(member);
+			member.setPassword(String.format("%s/%s"
+					,request.getParameter("before_pass")
+					,request.getParameter("after_pass")));
+			MemberServiceImpl.getInstance().updateMember(member);
 			System.out.println("ID : "+member.getUserId()+"\nPass : "+member.getPassword());
-			System.out.println("Name : "+member.getName()+"\nSSN : "+member.getSsn());
 			break;
 		}
 		super.execute();
 	}
-	
-	
-	
 }

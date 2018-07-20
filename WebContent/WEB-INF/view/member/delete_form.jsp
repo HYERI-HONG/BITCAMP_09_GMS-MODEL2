@@ -16,7 +16,7 @@
 	비밀번호 확인: <br>
 	<input type="text" name="password"/>
 	<br><br>
-	<input type="hidden" name="action" value="memberDelete" />
+	<input type="hidden" name="action" value="delete" />
 	<input type="hidden" name="page" value="delete_result" />
 	<input type="submit" value ="탈퇴" />
 	</form>

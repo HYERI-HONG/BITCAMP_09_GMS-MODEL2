@@ -29,7 +29,7 @@
 				<li><a href="<%=ctx%>/member.do?action=move&page=delete_form">회원 탈퇴</a></li>
 				<li><a href="">관리자 로그인</a></li>
 				
-				<li><a href="<%=ctx%>/member.do?action=memberlist&page=memberlist">전체 회원 목록</a></li>
+				<li><a href="<%=ctx%>/member.do?action=list&page=memberlist">전체 회원 목록</a></li>
 				<li><a href="<%=ctx%>/member.do?action=move&page=some_member_list_form">팀이름으로 회원검색</a></li>
 				<li><a href="<%=ctx%>/member.do?action=move&page=one_member_list_form">ID로 회원검색</a></li>
 		

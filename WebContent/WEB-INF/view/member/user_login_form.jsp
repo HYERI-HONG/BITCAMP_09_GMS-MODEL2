@@ -18,7 +18,7 @@
 	Password :<br>
 	<input type="text" name="password"/>
 	<br><br>
-	<input type="hidden" name="page" value="user_login_result" />
+	<input type="hidden" name="page" value="mypage" />
 	<input type="hidden" name="action" value="login" />
 	<input type="submit" value="전송" />
 </form>
