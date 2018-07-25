@@ -1,26 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String ctx = application.getContextPath();%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>사용자 로그인</title>
-<link rel="stylesheet" href="css/style.css" />
-</head>
+<html lang="en">
+	<jsp:include page="../common/head.jsp"/>
 <body>
-
-<h2 align="center">UserLogin Page</h2>
-<form action="<%=ctx%>/member.do" id="form-style">
-	ID :<br>
-	<input type="text" name="userid"/>
-	<br>
-	Password :<br>
-	<input type="text" name="password"/>
-	<br><br>
-	<input type="hidden" name="page" value="mypage" />
-	<input type="hidden" name="action" value="login" />
-	<input type="submit" value="전송" />
-</form>
-</body>
+	<div id = "user-login-layout">
+		<h2 align="center">UserLogin Page</h2>
+		<form id = "loginForm" style = "border:1px solid black">
+			ID :<br>
+			<input type="text" name="userid"/>
+			<br>
+			Password :<br>
+			<input type="text" name="password"/>
+			<br><br>
+			<input type="hidden" name="page" />
+			<input type="hidden" name="action"/>
+			<input id="LoginFormBtn" type="button" value="전송" />
+		</form>
+	</div>
+	<script>
+	//id는 getElementById()로 가져오고, name은 바로 'name.'으로 가져온다.
+	document.getElementById('LoginFormBtn').addEventListener('click',function(){
+		var form = document.getElementById('loginForm');
+		form.action = "${context}/member.do";
+		form.method = "post";
+		
+		member.setUserid(form.userid.value);
+		member.setPassword(form.password.value);
+		
+		if(member.loginValidation()){
+			form.page.value="mypage";
+			form.action.value="login";
+			form.submit();		
+		}
+	});
+	</script>
+	</body>
 </html>

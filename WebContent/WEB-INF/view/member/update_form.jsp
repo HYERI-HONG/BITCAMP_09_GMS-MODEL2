@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>비밀번호 변경</h3>
-	<form action="<%=ctx%>/member.do" id="form-style">
+	<form action="${context}/member.do" onsubmit="return sendForm()" id="form-style">
 	아이디 : <br>
 	<input type="text" name="userid"/>
 	 <br>

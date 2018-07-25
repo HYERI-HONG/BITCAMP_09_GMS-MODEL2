@@ -14,5 +14,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/1027/eclipse/jee-oxygen/eclipse/lombok.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

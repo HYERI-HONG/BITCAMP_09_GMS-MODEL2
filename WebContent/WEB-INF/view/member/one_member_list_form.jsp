@@ -7,7 +7,7 @@
 	<title>ID로 회원 검색</title>
 </head>
 <body>
-<form action="<%=ctx%>/member.do" id="form-style">
+<form action="${context}/member.do" onsubmit="return sendForm()" id="form-style">
 	검색할 ID 입력 :<br>
 	<input type="text" name="userid"/>
 	<br><br>
