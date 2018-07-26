@@ -7,16 +7,13 @@
 	<div id="header">
 		<jsp:include page="../common/titleBox.jsp"/>
 		<jsp:include page="menuBox.jsp"/>
-		</div>
-
+	</div>
 	<div id="content">
 		<jsp:include page="../common/contentBox.jsp"/>
 		</div>
-	
 	<div id="footer">
 		<jsp:include page="../common/footerBox.jsp"/>
 	</div>
 </div>
 </body>
 </html>
-

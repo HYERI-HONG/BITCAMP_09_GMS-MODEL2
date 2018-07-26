@@ -19,7 +19,6 @@
 		</form>
 	</div>
 	<script>
-	//id는 getElementById()로 가져오고, name은 바로 'name.'으로 가져온다.
 	document.getElementById('LoginFormBtn').addEventListener('click',function(){
 		var member = new Member();
 		var form = document.getElementById('loginForm');
@@ -29,7 +28,7 @@
 		member.setUserid(form.userid.value);
 		member.setPassword(form.password.value);
 		
-		if(member.loginValidation()){
+		if(service.loginValidation(member)){
 			form.page.value="mypage";
 			form.action.value="login";
 			form.submit();		

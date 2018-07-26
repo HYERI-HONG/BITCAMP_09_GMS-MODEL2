@@ -7,10 +7,10 @@
 <script>
 	/* var common = new Common(); */
 	document.getElementById("moveLoginForm").addEventListener('click',function(){ //콜백함수
-	new Common().move('${context}','member','move','user_login_form');
+		router.move(['${context}','member','move','user_login_form']);
 	});
 	
 	document.getElementById("moveJoinForm").addEventListener('click',function(){ 
-		new Common().move('${context}','member','move','join_form');
+		router.move(['${context}','member','move','join_form']);
 	});
 </script>
