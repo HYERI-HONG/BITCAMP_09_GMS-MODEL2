@@ -2,11 +2,15 @@
 <div id="login-box">
 		<a id="moveLoginForm">LOGIN</a>
 		&nbsp;&nbsp;&nbsp; <!-- 공백 -->
-		<a onclick="new Common().move('member','move','join_form')">JOIN</a>
+		<a id="moveJoinForm">JOIN</a>
 </div>	
 <script>
 	/* var common = new Common(); */
 	document.getElementById("moveLoginForm").addEventListener('click',function(){ //콜백함수
-	common.move('member','move','user_login_form');
+	new Common().move('${context}','member','move','user_login_form');
+	});
+	
+	document.getElementById("moveJoinForm").addEventListener('click',function(){ 
+		new Common().move('${context}','member','move','join_form');
 	});
 </script>

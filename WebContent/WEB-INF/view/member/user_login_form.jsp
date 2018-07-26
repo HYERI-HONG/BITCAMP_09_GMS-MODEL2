@@ -21,6 +21,7 @@
 	<script>
 	//id는 getElementById()로 가져오고, name은 바로 'name.'으로 가져온다.
 	document.getElementById('LoginFormBtn').addEventListener('click',function(){
+		var member = new Member();
 		var form = document.getElementById('loginForm');
 		form.action = "${context}/member.do";
 		form.method = "post";
