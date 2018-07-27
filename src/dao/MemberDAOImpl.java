@@ -30,7 +30,10 @@ public class MemberDAOImpl implements MemberDAO {
 					member.getName(),
 					member.getPassword(),
 					member.getSsn(),
-					member.getAge()
+					member.getAge(),
+					member.getGender(),
+					member.getTeamId(),
+					member.getRoll()
 					));
 		} catch (Exception e) {
 			e.printStackTrace();

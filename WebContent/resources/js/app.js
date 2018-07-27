@@ -7,55 +7,102 @@
 		}};
 	})();
 	
-	var service = (()=>{
+	var service =(()=>{
 		return{
-			loginValidation : x=>{
-				
-				if(x.getPassword()===''&&x.getUserid()===''){
-					alert("ID와 비밀번호 입력하세요");
-					return false;
-				}else if(x.getUserid()===''){
-					alert("ID를 입력하세요");
-					return false;
-				}else if(x.getPassword()===''){
-					alert("비밀번호를 입력하세요");
-					return false;
-				}
-				return true;
-			},
-			joinValidation : x=>{
-				return true;
+			nullChecker:x=>{
+				var i=0;
+				var j = {
+					checker : true,
+					text : '필수 입력값이 없습니다.'
+				};
+
+				for(i in x){
+					if(x[i]===''){
+						j.checker = false;
+						break;
+					}
+				}	
+				return j;
 			}
-		};
+		}
 	})();
 	
-	function Member(){
-		var userid, ssn, password,name;
-		this.setUserid = function(x){
-			this.userid = x;
+	var member =(()=>{
+		var _userid, _ssn, _password, _name, _age, _gender;
+		
+		var setUserid = (userid)=>{this._userid=userid;}
+		var setName = (name)=>{this._name=name;}
+		var setSsn = (ssn)=>{this._ssn=ssn;}
+		var setPassword = (password)=>{this._password=password;}
+		var setAge = x=>{	
+			
+			var date= new Date();
+			var toMonth =date.getMonth()+1;
+			var toDay = date.getDate();
+			var toYear= date.getFullYear();
+			
+			var birYear =x.substring(0,2);
+			var birMonth = x.substring(2,4);
+			var birDay = x.substring(4,6);
+			
+			if(parseInt(birYear)>18&&parseInt(birYear)<=99) {
+				birYear = "19"+birYear;
+			}else {
+				birYear = "20"+birYear;
+			}
+
+			var age =parseInt(toYear)-parseInt(birYear);
+			
+			if((parseInt(birMonth)*100+parseInt(birDay))>(parseInt(toMonth)*100+parseInt(toDay))){
+				age--;
+			}
+			this._age= age;
 		}
-		this.setName = function(x){
-			this.name = x;
+		var setGender = x=>{
+			
+			var genderNum = x.charAt(7);
+			var gender = '';
+			
+			if(genderNum==='1'||genderNum==='3'){
+				gender="남자";
+			}else if(genderNum==='2'||genderNum==='4'){
+				gender="여자";
+			}else if(genderNum==='5'||genderNum==='6'){
+				gender="외국인";
+			}
+			this._gender=gender;
 		}
-		this.setSsn = function(x){
-			this.ssn = x;
+		
+		var getUserid = ()=>{return this._userid;}
+		var getName = ()=>{return this._name;}
+		var getSsn = ()=>{return this._ssn;}
+		var getPassword = ()=>{return this._password;}
+		var getAge = ()=>{return this._age;}
+		var getGender = ()=>{return this._gender;}
+		
+		return{
+			setUserid : setUserid,
+			setName : setName,
+			setSsn : setSsn,
+			setPassword : setPassword,
+			setAge : setAge,
+			setGender : setGender,
+			
+			getName : getName,
+			getUserid : getUserid, 
+			getSsn : getSsn,
+			getPassword : getPassword,
+			getAge : getAge,
+			getGender : getGender,
+			join : x=>{
+				member.setAge(x);
+				member.setGender(x);
+			}
+			
 		}
-		this.setPassword = function(x){
-			this.password = x;
-		}
-		this.getName = function(){
-			return this.name;
-		}
-		this.getUserid = function(){
-			return this.userid;
-		}
-		this.getSsn = function(){
-			return this.ssn;
-		}
-		this.getPassword = function(){
-			return this.password;
-		}
-	};
+	})();
+		
+	
 	
 	
 	
