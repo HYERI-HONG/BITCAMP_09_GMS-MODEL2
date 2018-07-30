@@ -1,22 +1,4 @@
-
-/* 	table,td,th,tr{
-	border: 1px solid black;
-	border-collapse:collapse;
-	text-align : center
-	}
-	.width-full{width:70%}
-	.height-full{height:500px}
-	.margin-auto{margin: 0 auto}
-	.width-part{width:50%}
-	.color-top{background-color:tomato}
-	.color-bottom{background-color:#ffb3b3}
-	main
-	#img-size{width:500px; height:315px}
-	#color-background{background-color: white}
-	user,admin
-	#form-style{border:1px solid black; width: 300px; margin : 0 auto} */
-	
-	body{font-family: 'Malgun Gothic','Verdana';
+body{font-family: 'Malgun Gothic','Verdana';
 		background-color: #0080c0;
 		color: #fff;
 		margin: 0;
@@ -119,4 +101,24 @@ div#footer{
 	padding: 10px 0;
 	line-height: normal;
 	font-size: 1.5em;	
+}
+table#mypage{
+	border : 1px solid white;
+	width : 800px;
+	height : 100px;
+	text-align : center;
+	margin : auto;
+}
+table#mypage tr th{
+	
+}
+table#mypage tr td{
+	border : 1px solid white;
+	text-align : center;
+}
+
+div#user_login_form{
+	border : 1px solid white;
+	margin : auto;
+	text-align : center;
 }

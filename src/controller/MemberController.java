@@ -15,7 +15,8 @@ import enums.Action;
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		System.out.println("--------------Controller------------");
 		Sentry.init(request, response);
 		
@@ -50,7 +51,7 @@ public class MemberController extends HttpServlet {
 			break;
 		case UPDATE:
 			System.out.println("--------------Controller : update ---------------");
-			Carrier.redirect(request, response,"");
+			Carrier.forward(request, response);
 			break;
 		case DELETE:
 			System.out.println("--------------Controller : delete ---------------");
@@ -59,6 +60,8 @@ public class MemberController extends HttpServlet {
 		case LOGIN:
 			System.out.println("--------------Controller : login ---------------");
 			if(request.getAttribute("match").equals("TRUE")) {
+				request.getSession().setAttribute("user", request.getAttribute("user"));
+				System.out.println(request.getAttribute("user"));
 				Carrier.forward(request, response);
 			}else {
 				Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");

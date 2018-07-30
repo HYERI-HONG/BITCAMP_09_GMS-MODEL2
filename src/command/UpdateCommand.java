@@ -11,7 +11,7 @@ public class UpdateCommand extends Command {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		setPage("mypage");
 		execute();
 	}
 	@Override
@@ -20,12 +20,14 @@ public class UpdateCommand extends Command {
 		case MEMBER:
 			System.out.println("-----------update command--------------");
 			MemberBean member =new MemberBean();
-			member.setUserId(request.getParameter("userid"));
 			member.setPassword(String.format("%s/%s"
 					,request.getParameter("before_pass")
 					,request.getParameter("after_pass")));
+			member.setTeamId(request.getParameter("teamId"));
+			member.setRoll(request.getParameter("roll"));
 			MemberServiceImpl.getInstance().updateMember(member);
-			System.out.println("ID : "+member.getUserId()+"\nPass : "+member.getPassword());
+			break;
+		default:
 			break;
 		}
 		super.execute();

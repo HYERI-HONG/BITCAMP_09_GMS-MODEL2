@@ -108,6 +108,8 @@ public class MemberDAOImpl implements MemberDAO {
 				member.setRoll(rs.getString("ROLL"));
 				member.setPassword(rs.getString("PASSWORD"));
 				member.setSsn(rs.getString("SSN"));
+				member.setGender(rs.getString("GENDER"));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -138,7 +140,7 @@ public class MemberDAOImpl implements MemberDAO {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.UPDATE.toString(),member.getPassword().split("/")[1],member.getPassword().split("/")[0],member.getUserId()));
+			.executeUpdate(String.format(MemberQuery.UPDATE.toString(),member.getPassword().split("/")[1],member.getTeamId(),member.getRoll(),member.getPassword().split("/")[0]));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

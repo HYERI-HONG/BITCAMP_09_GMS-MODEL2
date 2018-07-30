@@ -8,8 +8,6 @@ public class Command implements Order{
 	protected HttpServletRequest request;
 	protected String action, domain, page,view;
 
-
-
 	@Override
 	public void execute() {
 		this.view = "/WEB-INF/view/"+domain+"/"+page+".jsp";
