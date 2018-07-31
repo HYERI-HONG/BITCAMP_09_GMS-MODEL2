@@ -11,7 +11,9 @@ public class DeleteCommand extends Command {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		/*setPage(request.getParameter("page"));*/
+
+		
 		execute();
 	}
 	
@@ -21,10 +23,12 @@ public class DeleteCommand extends Command {
 		case MEMBER:
 			System.out.println("-----------delete command--------------");
 			MemberBean member = new MemberBean();
-			member.setUserId(request.getParameter("userid"));
+			member.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());
 			member.setPassword(request.getParameter("password"));
 			MemberServiceImpl.getInstance().deleteMember(member);
-			System.out.println("ID : "+member.getUserId()+"\nPass : "+member.getPassword());
+			request.getSession().invalidate();
+			break;
+		default:
 			break;
 		}
 		super.execute();

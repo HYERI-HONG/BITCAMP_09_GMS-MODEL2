@@ -60,8 +60,6 @@ public class MemberController extends HttpServlet {
 		case LOGIN:
 			System.out.println("--------------Controller : login ---------------");
 			if(request.getAttribute("match").equals("TRUE")) {
-				request.getSession().setAttribute("user", request.getAttribute("user"));
-				System.out.println(request.getAttribute("user"));
 				Carrier.forward(request, response);
 			}else {
 				Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");

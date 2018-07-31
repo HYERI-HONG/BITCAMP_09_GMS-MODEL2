@@ -23,7 +23,8 @@ public enum MemberQuery {
 			break;
 		case UPDATE:
 			query="UPDATE MEMBER SET PASSWORD = '%s',TEAM_ID = '%s',ROLL='%s'" + 
-					" WHERE PASSWORD LIKE '%s'";
+					" WHERE MEM_ID LIKE '%s'" +
+					" AND PASSWORD LIKE '%s'";
 			break;
 		case DELETE :
 			query ="DELETE FROM MEMBER" + 

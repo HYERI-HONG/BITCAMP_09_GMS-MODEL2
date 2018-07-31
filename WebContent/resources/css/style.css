@@ -3,12 +3,11 @@ body{font-family: 'Malgun Gothic','Verdana';
 		color: #fff;
 		margin: 0;
 		padding: 0; }
-h1,h2,h3,h4,h5,h6{font-size: 1.5em;}
 h1{font-size: 2em;
 	padding-bottom: 0;
 	margin-bottom: 0;}
 div#wrapper{
-	width: 90%;
+	width: 100%;
 	padding-bottom: 0;
 	margin-bottom: 0;
 	margin-left: auto;
@@ -20,10 +19,18 @@ div#header{
 	padding-bottom: 0;
 	color: #000;
 }
+div#menu_header{
+	position: relative;
+	margin-bottom:0;
+	padding-bottom: 0;
+	background : #005580;
+	color: white;
+}
 div#title-box{
 	float: left;
-	text-align: left;
+	text-align: center;
 	display: block;
+	margin-left: 50px;
 }
 div#login-box{
 	float: right;
@@ -53,13 +60,14 @@ div#header h1{
 div#content{
 	padding: 15px 30px 15px 30px;
 	background-color: #fff;
+	background-image : url('../img/home/main.jpg');
 	margin-bottom: 30px;
 	min-height: 400px;
 }
 div#content-box{
 	clear: both;
-	color : #808000;
-	margin-top: 40px;
+	color : white;
+	margin-top: 200px;
 }
 div#menu-box{
 	margin-top: 40px;
@@ -100,7 +108,7 @@ div#footer{
 	margin: 0;
 	padding: 10px 0;
 	line-height: normal;
-	font-size: 1.5em;	
+	font-size: 0.9em;	
 }
 table#mypage{
 	border : 1px solid white;
@@ -117,8 +125,50 @@ table#mypage tr td{
 	text-align : center;
 }
 
-div#user_login_form{
+div#login_content{
 	border : 1px solid white;
-	margin : auto;
+	margin : 130px 60px;
 	text-align : center;
+}
+div#mypage_content{
+	margin : 25px 60px;
+	text-align : center;
+}
+div#delete_content{
+	border : 1px solid white;
+	margin : 145px 60px;
+	text-align : center;
+}
+div#update_content{
+	border : 1px solid white;
+	margin : 50px 60px;
+	text-align : center;
+}
+
+div#menu_content{
+	border : 1px solid white;
+	margin : 20px 60px;
+	text-align : center;
+}
+div#mypage_footer{
+	clear: both;
+	color: white;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	line-height: normal;
+	font-size: 0.8em;
+	background-image : url('../img/home/footer-front.png');	
+	background-size: contain;
+}
+div#menu_footer{
+	clear: both;
+	color: white;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	line-height: normal;
+	font-size: 0.8em;
+	background-image : url('../img/home/footer-front.png');	
+	background-size: contain;
 }

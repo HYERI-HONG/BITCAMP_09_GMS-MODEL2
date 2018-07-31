@@ -20,6 +20,7 @@ public class UpdateCommand extends Command {
 		case MEMBER:
 			System.out.println("-----------update command--------------");
 			MemberBean member =new MemberBean();
+			member.setUserId(((MemberBean)request.getSession().getAttribute("user")).getUserId());
 			member.setPassword(String.format("%s/%s"
 					,request.getParameter("before_pass")
 					,request.getParameter("after_pass")));

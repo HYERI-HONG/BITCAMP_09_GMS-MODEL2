@@ -35,7 +35,7 @@
 		var setName = (name)=>{this._name=name;}
 		var setSsn = (ssn)=>{this._ssn=ssn;}
 		var setPassword = (password)=>{this._password=password;}
-		var setAge = x=>{	
+		var setAge = (x)=>{	
 			
 			var date= new Date();
 			var toMonth =date.getMonth()+1;
@@ -59,7 +59,7 @@
 			}
 			this._age= age;
 		}
-		var setGender = x=>{
+		var setGender = (x)=>{
 			
 			var genderNum = x.charAt(7);
 			var gender = '';
@@ -72,6 +72,7 @@
 				gender="외국인";
 			}
 			this._gender=gender;
+			
 		}
 		
 		var getUserid = ()=>{return this._userid;}

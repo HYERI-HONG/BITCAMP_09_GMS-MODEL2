@@ -4,9 +4,15 @@
 <html lang="en">
 	<jsp:include page="../common/head.jsp"/>
 <body>
-	<div>
-		<h2 align="center">Join Page</h2>
-		<form id ="joinForm" name="joinForm" style = "border:1px solid black">
+	<div id="wrapper">
+		<div id="menu_header">
+			<jsp:include page="../common/titleBox.jsp" />
+			<jsp:include page="../common/menuBox.jsp" />
+		</div>
+		
+		<div id="menu_content">
+		<h2 align="center">회원 가입</h2>
+		<form id ="joinForm" name="joinForm">
 			아이디 : <br>
 			<input type="text" name="userid" />
 			<br>
@@ -18,11 +24,6 @@
 			<br>
 			주민 번호 : <br>
 			<input type="text" name ="ssn" />
-			<br>
-			<input type="hidden" name="page" value="user_login_form"/>
-			<input type="hidden" name="action" value="join"/>
-			<input type="hidden" name="age"/>
-			<input type="hidden" name="gerder"/>
 			<br>
 			소속팀 : <br>
 		    <input type="radio" name="teamid" value="LP" checked="checked" /> 레츠플레이팀
@@ -51,6 +52,11 @@
 			<br><br>
 			<input id="JoinFormBtn" type="button"  value = "등록" />	
 		</form>
+		</div>
+		
+		<div id="menu_footer">
+			<jsp:include page="../common/footerBox.jsp"/>
+		</div>	
 	</div>
 	
 	
@@ -62,14 +68,27 @@
 			document.joinForm.name.value,
 			document.joinForm.ssn.value]);
 		
+		var form = document.getElementById('joinForm');
 		
 		if(x.checker){
-			var form = document.getElementById('joinForm');
+			member.join(form.ssn.value);
+					
+			var arr =[
+				{'name' : 'action','value':'join'},
+				{'name':'age', 'value':member.getAge()},
+				{'name' : 'gender' ,'value' : member.getGender()}
+				];
+			for(var i in arr){
+				var node = document.createElement('input');	
+				node.setAttribute('type', 'hidden');
+				node.setAttribute('name',arr[i].name);
+				node.setAttribute('value',arr[i].value);
+				form.appendChild(node);
+			}
+			alert("성별" + member.getGender());
+			
 			form.action = "${context}/member.do";
 			form.method = "post";
-			member.join(form.ssn.value);
-			form.age.value = member.getAge();
-			form.gerder.value = member.getGender();
 			form.submit();	
 		}
 		else{

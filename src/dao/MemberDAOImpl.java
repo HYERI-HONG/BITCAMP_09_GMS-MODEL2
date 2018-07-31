@@ -140,7 +140,7 @@ public class MemberDAOImpl implements MemberDAO {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.UPDATE.toString(),member.getPassword().split("/")[1],member.getTeamId(),member.getRoll(),member.getPassword().split("/")[0]));
+			.executeUpdate(String.format(MemberQuery.UPDATE.toString(),member.getPassword().split("/")[1],member.getTeamId(),member.getRoll(),member.getUserId(),member.getPassword().split("/")[0]));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
