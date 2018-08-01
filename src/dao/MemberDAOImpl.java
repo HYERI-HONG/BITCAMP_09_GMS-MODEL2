@@ -51,12 +51,11 @@ public class MemberDAOImpl implements MemberDAO {
 			while(rs.next()) {
 				member = new MemberBean();
 				member.setUserId(rs.getString("USERID"));
-				member.setTeamId(rs.getString("TEAMID"));
+				member.setGender(rs.getString("GENDER"));
 				member.setName(rs.getString("NAME"));
 				member.setAge(rs.getString("AGE"));
 				member.setRoll(rs.getString("ROLL"));
-				member.setPassword(rs.getString("PASSWORD"));
-				member.setSsn(rs.getString("SSN"));
+				member.setTeamId(rs.getString("TEAMID"));
 				list.add(member);
 			}
 		} catch (Exception e) {

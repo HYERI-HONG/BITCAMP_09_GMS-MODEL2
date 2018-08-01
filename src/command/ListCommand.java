@@ -15,9 +15,11 @@ public class ListCommand extends Command {
 @Override
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())){
-		case MEMBER:
+		case ADMIN:
 			System.out.println("-----------memberlist command--------------");
 			request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
+			break;
+		default:
 			break;
 		}
 		super.execute();

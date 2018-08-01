@@ -37,10 +37,10 @@ public enum MemberQuery {
 					" TEAM_ID TEAMID," + 
 					" NAME," + 
 					" AGE," + 
-					" ROLL," + 
-					" PASSWORD," + 
-					" SSN" + 
-					" FROM MEMBER";
+					" GENDER," + 
+					" ROLL" + 
+					" FROM MEMBER"+
+					" ORDER BY MEM_ID";
 			break;
 		case SELECT_SOME:
 			query ="SELECT" + 

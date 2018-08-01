@@ -2,9 +2,20 @@
 
 <div id="menu-box">
 		<ul	id="menu">
-			<li><a href="">HOME</a></li>
+			<li><a id="goHome">HOME</a></li>
 			<li><a href="">ABOUT</a></li>
-			<li><a href="${context}/admin.do?action=move&page=main">ADMIN</a></li>
-		
-			</ul>
-		</div> 
+			<li><a id="moveToAdminMain">ADMIN</a></li>
+		</ul>
+</div> 
+<script>
+document.getElementById('moveToAdminMain').addEventListener('click',function(){
+	admin.check('${context}');
+})
+document.getElementById("goHome").addEventListener('click',function(){ //콜백함수
+	router.move({context : '${context}',
+		domain : 'common'}
+		);
+});
+</script>
+
+

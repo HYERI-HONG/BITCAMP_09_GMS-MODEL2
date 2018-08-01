@@ -5,11 +5,11 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-		<jsp:include page="../common/titleBox.jsp"/>
+		<jsp:include page="titleBox.jsp"/>
 		<jsp:include page="menuBox.jsp"/>
 	</div>
-	<div id="content">
-		<jsp:include page="../common/contentBox.jsp"/>
+	<div id="admin_content">
+		<jsp:include page="contentBox.jsp"/>
 		</div>
 	<div id="footer">
 		<jsp:include page="../common/footerBox.jsp"/>

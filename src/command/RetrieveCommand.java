@@ -22,6 +22,11 @@ public class RetrieveCommand extends Command {
 		case MEMBER:
 			request.setAttribute("retrive", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
 			break;
+		case ADMIN:
+			request.setAttribute("retrive", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+			break;
+		default:
+			break;
 		}
 		super.execute();
 	}
