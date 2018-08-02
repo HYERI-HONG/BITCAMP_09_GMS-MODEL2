@@ -19,10 +19,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberBean> findByName(String name) {
-		return MemberDAOImpl.getInstance().selectMemberByName(name);
+	public List<MemberBean> findByWord(String word) {
+		return MemberDAOImpl.getInstance().selectMemberByWord(word);
 	}
-
 	@Override
 	public MemberBean findById(String id) {
 		
@@ -49,4 +48,5 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(MemberBean member) {
 		return (MemberDAOImpl.getInstance().login(member)!=null);
 	}
+
 }

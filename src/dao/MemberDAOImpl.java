@@ -65,33 +65,6 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberBean> selectMemberByName(String name) {
-		List<MemberBean> list = new ArrayList<>();
-		
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_SOME.toString(), name));
-			MemberBean member = null;
-			while(rs.next()) {
-				member = new MemberBean();
-				member.setUserId(rs.getString("USERID"));
-				member.setTeamId(rs.getString("TEAMID"));
-				member.setName(rs.getString("NAME"));
-				member.setAge(rs.getString("AGE"));
-				member.setRoll(rs.getString("ROLL"));
-				member.setPassword(rs.getString("PASSWORD"));
-				member.setSsn(rs.getString("SSN"));
-				list.add(member);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	@Override
 	public MemberBean selectMemberById(String id) {
 		MemberBean member = new MemberBean();
 		try {
@@ -114,6 +87,46 @@ public class MemberDAOImpl implements MemberDAO {
 			e.printStackTrace();
 		}
 		return member;
+	}
+	
+	@Override
+	public List<MemberBean> selectMemberByWord(String word) {
+		List<MemberBean> list = new ArrayList<>();
+		String sql ="SELECT" + 
+				"    MEM_ID USERID," + 
+				"    TEAM_ID TEAMID," + 
+				"    NAME," + 
+				"    AGE," + 
+				"    ROLL," + 
+				"    PASSWORD," + 
+				"    GENDER," + 
+				"    SSN" + 
+				" FROM MEMBER" + 
+				" WHERE "+word.split("/")[0]+" LIKE '%"+word.split("/")[1]+"%'";
+		System.out.println("sql : " +sql);
+		
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
+					.getConnection()
+					.createStatement()
+					.executeQuery(sql);
+			MemberBean member = null;
+			while(rs.next()) {
+				member = new MemberBean();
+				member.setUserId(rs.getString("USERID"));
+				member.setTeamId(rs.getString("TEAMID"));
+				member.setName(rs.getString("NAME"));
+				member.setAge(rs.getString("AGE"));
+				member.setRoll(rs.getString("ROLL"));
+				member.setGender(rs.getString("GENDER"));
+				member.setPassword(rs.getString("PASSWORD"));
+				member.setSsn(rs.getString("SSN"));
+				list.add(member);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
@@ -185,5 +198,8 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return mem;
 	}
+
+
+	
 
 }

@@ -24,13 +24,25 @@
 					}
 				}	
 				return j;
+			},
+			addClass : (dom,cName)=>{
+				var arr = cName.split(" ");
+				if(arr.indexOf(cName)== -1){
+					dom.className += " "+cName;
+				}
 			}
 		}
 	})();
 	var admin = (()=>{
 		return {
 			check : x=>{
-				var isAdmin = confirm("관리자 입니까?");
+				router.move({
+					context : x,
+					domain : 'admin',
+					action:'list',
+					page : 'main',
+				});
+			/*	var isAdmin = confirm("관리자 입니까?");
 				if(isAdmin){
 					var password = prompt("관리자 비밀번호를 입력하세요.");
 					if(password== 1){
@@ -44,6 +56,40 @@
 					}else{
 						alert('관리자 외에 접근이 불가합니다.');
 					}
+				}*/
+			},
+			main : x=>{
+				service.addClass(
+						document.getElementById('content_search'),
+						'search_content '
+						);
+				service.addClass(
+						document.getElementById('memberlist'),
+						'memberlist '
+						);
+				service.addClass(
+						document.getElementById('searchButton'),
+						'search_button '
+						);
+					
+				
+				document.getElementById('searchButton').addEventListener('click',function(){
+					location.href = (document.getElementById('searchOption').value==='userid')? 
+							x+"/admin.do?action=retrieve&page=main&userid="
+									+document.getElementById('searchWord').value
+							: 
+							x+"/admin.do?action=search&page=main&searchWord="+document.getElementById('searchWord').value
+									+"&searchOption="+document.getElementById('searchOption').value;
+				});
+				
+				for(var i of document.querySelectorAll('.username')){
+					service.addClass(
+							i,'cursor fontColorBlue'
+					);
+					i.addEventListener('click',function(){
+						location.href =x+"/admin.do?action=retrieve&page=memberDetail&userid="+this.getAttribute('id');
+					});
+					
 				}
 			}
 		};	

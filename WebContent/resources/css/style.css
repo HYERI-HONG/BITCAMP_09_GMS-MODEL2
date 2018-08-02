@@ -67,7 +67,7 @@ div#content{
 div#admin_content{
 	padding: 15px 30px 15px 30px;
 	background-color: #005580;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	min-height: 400px;
 }
 div#admin_content_box{
@@ -121,22 +121,26 @@ div#footer{
 	line-height: normal;
 	font-size: 0.9em;	
 }
-table#memberlist{
+.memberlist{
 	border : 1px solid black;
 	text-align : center;
 	margin : auto;
 	background-color: white;
+	width : 80%;
 }
-table#memberlist tr th{
+.memberlist tr th{
 	border : 1px solid black;
-	/* background-color : #ff8000; */
-	text-align : center;
+	background-color : #ff8000;
 }
-table#memberlist tr td{
-	border : 1px solid black;
-	text-align : center;
-}
+.memberlist tr td{border : 1px solid black} 
 
+.search_content{
+    margin-bottom: 20px;
+    float : center;
+}
+.search_button{
+	width: 50px;
+}
 table#mypage{
 	border : 1px solid white;
 	width : 800px;
@@ -202,4 +206,3 @@ div#menu_footer{
 
 
 
-.bgColorisYello{background-color : #ff8000}

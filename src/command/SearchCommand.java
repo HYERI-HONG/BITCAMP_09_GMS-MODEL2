@@ -17,7 +17,14 @@ public class SearchCommand extends Command {
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER :
-			request.setAttribute("search", MemberServiceImpl.getInstance().findByName(request.getParameter("teamname")));
+			request.setAttribute("member", MemberServiceImpl.getInstance().findByWord(request.getParameter("teamname")));
+			break;
+		case ADMIN :
+			String word = request.getParameter("searchOption")+"/"+request.getParameter("searchWord");
+			request.setAttribute("list",MemberServiceImpl.getInstance().findByWord(word));
+			break;
+		
+		default:
 			break;
 		}
 		super.execute();

@@ -1,8 +1,10 @@
 package command;
 
+import java.util.*;
+
 import javax.servlet.http.HttpServletRequest;
 
-
+import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
@@ -23,7 +25,10 @@ public class RetrieveCommand extends Command {
 			request.setAttribute("retrive", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
 			break;
 		case ADMIN:
-			request.setAttribute("retrive", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+			System.out.println("-----retrieve command-----");
+			List <MemberBean> list = new ArrayList<>();
+			list.add(MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+			request.setAttribute("list",list);
 			break;
 		default:
 			break;

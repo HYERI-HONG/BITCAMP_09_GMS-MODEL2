@@ -27,7 +27,11 @@ public class AdminController extends HttpServlet {
 			Carrier.forward(request, response);
 			break;
 		case RETRIEVE:
-			System.out.println("--USERID--");
+			System.out.println("--RETRIEVE--");
+			Carrier.forward(request, response);
+			break;	
+		case SEARCH:
+			System.out.println("--SEARCH--");
 			Carrier.forward(request, response);
 			break;	
 		case COUNT:

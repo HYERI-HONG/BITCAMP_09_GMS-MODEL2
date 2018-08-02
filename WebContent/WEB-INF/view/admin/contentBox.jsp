@@ -3,8 +3,18 @@
 
 <jsp:include page="../common/head.jsp"/>
 <div id="admin_content_box">
+	<div id="content_search">
+		    <select name="serch" id="searchOption">
+		    <option value="none">검색조건</option>
+		    <option value="userid">아이디로 검색</option>
+		    <option value="name">이름으로 검색</option>
+		    <option value="team_id">팀명으로 검색</option>
+		    </select>
+		<input id ="searchWord" type="text" placeholder="검색어 입력"/>
+		<input type="button" id="searchButton" value="검색" />
+	</div>
 	<table id="memberlist">
-		<tr id = "memberlistMeta">
+		<tr>
 			<th>아 이 디</th>
 			<th>이     름</th>
 			<th>나     이</th>
@@ -17,7 +27,7 @@
 			<td>${member.userId}</td>
 			<td><a class="username" id="${member.userId}">${member.name}</a></td>
 			<%-- <td><a style="cursor: pointer; 
-			"href="${context}/admin.do?action=retrieve&page=memberDetail&userid=${member.userId}">${member.name}</a></td> --%>
+			"location.href="${context}/admin.do?action=retrieve&page=memberDetail&userid=${member.userid}">${member.name}</a></td> --%>
 			<td>${member.age}</td>
 			<td>${member.gender}</td>
 			<td>${member.roll}</td>
@@ -28,14 +38,5 @@
 </div>
 
 <script>
-document.getElementById('memberlistMeta').className='bgColorisYello';
-	var x = document.querySelectorAll('.username');
-	for(i in x){
-		x[i].style.color = 'blue';
-		x[i].style.cursor = 'pointer';
-		x[i].addEventListener('click',function(){
-			location.href ="${context}/admin.do?action=retrieve&page=memberDetail&userid="+this.getAttribute('id');
-		});
-		
-	}
+	admin.main('${context}');
 </script>

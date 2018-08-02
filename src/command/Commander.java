@@ -37,6 +37,7 @@ public class Commander{
 			cmd = new SearchCommand(request);
 			break;
 		case RETRIEVE:
+			System.out.println("---------commander : retrieve ---------");
 			cmd = new RetrieveCommand(request);
 			break;
 		case COUNT :
