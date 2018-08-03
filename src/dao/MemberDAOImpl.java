@@ -89,7 +89,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return member;
 	}
 	
-	//sql에 패턴걸기
+	
 	@Override
 	public List<MemberBean> selectMemberByWord(String word) {
 		List<MemberBean> list = new ArrayList<>();
