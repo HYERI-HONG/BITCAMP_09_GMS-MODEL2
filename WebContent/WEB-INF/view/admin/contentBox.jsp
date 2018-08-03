@@ -6,9 +6,9 @@
 	<div id="content_search">
 		    <select name="serch" id="searchOption">
 		    <option value="none">검색조건</option>
-		    <option value="userid">아이디로 검색</option>
+		    <option value="userId">아이디로 검색</option>
 		    <option value="name">이름으로 검색</option>
-		    <option value="team_id">팀명으로 검색</option>
+		    <option value="teamId">팀명으로 검색</option>
 		    </select>
 		<input id ="searchWord" type="text" placeholder="검색어 입력"/>
 		<input type="button" id="searchButton" value="검색" />
@@ -34,9 +34,18 @@
 			<td>${member.teamId}</td>
 		</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="6">
+				<h4>전체 회원 수 : ${count}</h4>
+				<c:forEach var="i" begin="1" end="${count % 5 > 0? count / 5+1:count / 5}" step="1">
+					<span>${i}</span>
+				</c:forEach>
+			</td>
+		</tr>
 	</table>
 </div>
 
 <script>
 	admin.main('${context}');
+	
 </script>

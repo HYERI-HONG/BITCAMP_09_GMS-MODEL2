@@ -18,6 +18,7 @@ public class ListCommand extends Command {
 		case ADMIN:
 			System.out.println("-----------memberlist command--------------");
 			request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
+			request.setAttribute("count",MemberServiceImpl.getInstance().memberCount());
 			break;
 		default:
 			break;

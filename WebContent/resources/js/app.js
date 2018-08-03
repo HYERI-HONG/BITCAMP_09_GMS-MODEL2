@@ -74,7 +74,7 @@
 					
 				
 				document.getElementById('searchButton').addEventListener('click',function(){
-					location.href = (document.getElementById('searchOption').value==='userid')? 
+					location.href = (document.getElementById('searchOption').value==='userId')? 
 							x+"/admin.do?action=retrieve&page=main&userid="
 									+document.getElementById('searchWord').value
 							: 

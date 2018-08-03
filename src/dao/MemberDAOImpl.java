@@ -2,12 +2,15 @@ package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import domain.MemberBean;
 import enums.*;
 import factory.*;
 import pool.DBConstant;
+import template.PstmtQuery;
+import template.QueryTemplate;
 
 
 public class MemberDAOImpl implements MemberDAO {
@@ -89,43 +92,17 @@ public class MemberDAOImpl implements MemberDAO {
 		return member;
 	}
 	
-	
 	@Override
 	public List<MemberBean> selectMemberByWord(String word) {
+		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
-		String sql ="SELECT" + 
-				"    MEM_ID USERID," + 
-				"    TEAM_ID TEAMID," + 
-				"    NAME," + 
-				"    AGE," + 
-				"    ROLL," + 
-				"    PASSWORD," + 
-				"    GENDER," + 
-				"    SSN" + 
-				" FROM MEMBER" + 
-				" WHERE "+word.split("/")[0]+" LIKE '%"+word.split("/")[1]+"%'";
-		System.out.println("sql : " +sql);
-		
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(sql);
-			MemberBean member = null;
-			while(rs.next()) {
-				member = new MemberBean();
-				member.setUserId(rs.getString("USERID"));
-				member.setTeamId(rs.getString("TEAMID"));
-				member.setName(rs.getString("NAME"));
-				member.setAge(rs.getString("AGE"));
-				member.setRoll(rs.getString("ROLL"));
-				member.setGender(rs.getString("GENDER"));
-				member.setPassword(rs.getString("PASSWORD"));
-				member.setSsn(rs.getString("SSN"));
-				list.add(member);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("column", word.split("/")[0]);
+		map.put("value", word.split("/")[1]);
+		map.put("table", Domain.MEMBER);
+		q.play(map);
+		for(Object s:q.getList()) {
+			list.add((MemberBean)s);
 		}
 		return list;
 	}
