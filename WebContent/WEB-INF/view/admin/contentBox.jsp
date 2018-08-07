@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<form action=""></form>
+<a href=""></a>
+
+
 <jsp:include page="../common/head.jsp"/>
 <div id="admin_content_box">
 	<div id="content_search">
@@ -37,9 +41,18 @@
 		<tr>
 			<td colspan="6">
 				<h4>전체 회원 수 : ${count}</h4>
-				<c:forEach var="i" begin="1" end="${count % 5 > 0? count / 5+1:count / 5}" step="1">
-					<span>${i}</span>
-				</c:forEach>
+				<ul class="pageBox">
+					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i">
+						<li>
+							<a class="changePage" id="${i.index}">${i.index}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${existNext}">
+						<li>다음▶</li>
+					</c:if>
+					
+				</ul>
+				
 			</td>
 		</tr>
 	</table>
@@ -47,5 +60,7 @@
 
 <script>
 	admin.main('${context}');
+	
+	
 	
 </script>

@@ -56,7 +56,6 @@ public enum MemberQuery {
 					" WHERE USERID LIKE '%s'";
 			break;
 		}
-	
 		return query;
 	}
 	

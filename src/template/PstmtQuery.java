@@ -9,15 +9,25 @@ public class PstmtQuery extends QueryTemplate{
 
 	@Override
 	void initialize() {
-		map.put("sql", String.format(
+		map.put("sql", map.get("column")==null? String.format("SELECT B.*" + 
+					" FROM (SELECT ROWNUM N, A.* FROM %s A ORDER BY N DESC) B" + 
+					" WHERE B.N BETWEEN ? AND ?", map.get("table"))
+				:
+					String.format(
                 "SELECT "+ ColumnFinder.find(Domain.MEMBER)
                 +" FROM %s WHERE %s LIKE ?", map.get("table"),map.get("column")));
 	}
 	@Override
-	void startPlay() {	
+	void startPlay() {
 		try {
 			pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
-			pstmt.setString(1, "%"+map.get("value").toString()+"%");
+			if(map.get("value")==null) {
+				pstmt.setString(1, map.get("beginRow").toString());
+				pstmt.setString(2, map.get("endRow").toString());
+			}else {
+				pstmt.setString(1, "%"+map.get("value").toString()+"%");
+			}
+			
 		} catch (Exception e) {	
 			e.printStackTrace();
 		}

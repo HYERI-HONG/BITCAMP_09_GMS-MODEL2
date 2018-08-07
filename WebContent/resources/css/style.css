@@ -203,6 +203,14 @@ div#menu_footer{
 	background-image : url('../img/home/footer-front.png');	
 	background-size: contain;
 }
+.pageBox{
+	list-style : none; /* remove list bullets */
+	padding : 0;
+	margin : 0;
+}
+.pageBox li{
+	display : inline;
+}
 
 
 

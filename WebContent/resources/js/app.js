@@ -91,6 +91,14 @@
 					});
 					
 				}
+				for(var j of document.querySelectorAll('.changePage')){
+					service.addClass(
+							j,'cursor fontColorBlue'
+					);
+					j.addEventListener('click',function(){
+						location.href =x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
+					});
+				}
 			}
 		};	
 	})();
