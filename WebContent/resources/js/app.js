@@ -81,13 +81,14 @@
 							x+"/admin.do?action=search&page=main&searchWord="+document.getElementById('searchWord').value
 									+"&searchOption="+document.getElementById('searchOption').value;
 				});
-				
+			},
+			page : x=>{
 				for(var i of document.querySelectorAll('.username')){
 					service.addClass(
 							i,'cursor fontColorBlue'
 					);
 					i.addEventListener('click',function(){
-						location.href =x+"/admin.do?action=retrieve&page=memberDetail&userid="+this.getAttribute('id');
+						location.href =x.context+"/admin.do?action=retrieve&page=memberDetail&userid="+this.getAttribute('id');
 					});
 					
 				}
@@ -96,9 +97,13 @@
 							j,'cursor fontColorBlue'
 					);
 					j.addEventListener('click',function(){
-						location.href =x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
+						location.href =x.context+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id')+"&beginPage="+x.beginPage;
 					});
 				}
+				document.getElementById('nextPgaeList').addEventListener('click',function(){
+					location.href = x.context+"/admin.do?action=list&page=main&endPage="+x.endPage
+				});
+				
 			}
 		};	
 	})();

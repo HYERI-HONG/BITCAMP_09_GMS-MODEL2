@@ -48,7 +48,7 @@
 						</li>
 					</c:forEach>
 					<c:if test="${existNext}">
-						<li>다음▶</li>
+						<li><a id="nextPgaeList">다음▶</a></li>
 					</c:if>
 					
 				</ul>
@@ -60,7 +60,9 @@
 
 <script>
 	admin.main('${context}');
-	
+	admin.page({context : '${context}',
+		endPage : '${endPage}',
+		beginPage : '${beginPage}'});
 	
 	
 </script>
