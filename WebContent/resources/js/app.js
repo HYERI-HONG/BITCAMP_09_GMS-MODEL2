@@ -99,6 +99,7 @@
 						location.href =x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
 					});
 				}
+				
 			}
 		};	
 	})();

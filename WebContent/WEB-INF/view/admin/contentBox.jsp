@@ -40,19 +40,20 @@
 		</c:forEach>
 		<tr>
 			<td colspan="6">
-				<h4>전체 회원 수 : ${count}</h4>
+				<h4>전체 회원 수 : ${page.count}</h4>
 				<ul class="pageBox">
-					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i">
+					<c:if test="${page.existPrev}">
+						<li id="${page.prevBlock}" class="changePage">◀이전 </li>
+					</c:if>
+					<c:forEach begin="${page.beginPage}" end="${page.endPage}" step="1" varStatus="i">
 						<li>
 							<a class="changePage" id="${i.index}">${i.index}</a>
 						</li>
 					</c:forEach>
-					<c:if test="${existNext}">
-						<li>다음▶</li>
+					<c:if test="${page.existNext}">
+						<li id="${page.nextBlock}" class="changePage"> 다음▶</li>
 					</c:if>
-					
 				</ul>
-				
 			</td>
 		</tr>
 	</table>
@@ -60,7 +61,5 @@
 
 <script>
 	admin.main('${context}');
-	
-	
 	
 </script>
