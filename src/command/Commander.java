@@ -29,11 +29,8 @@ public class Commander{
 			System.out.println("---------commander : delete ---------");
 			cmd = new DeleteCommand(request);
 			break;
-		case LIST:
+		case SEARCH:
 			System.out.println("---------commander : member_list ---------");
-			cmd = new ListCommand(request);
-			break;
-		case SEARCH :
 			cmd = new SearchCommand(request);
 			break;
 		case RETRIEVE:

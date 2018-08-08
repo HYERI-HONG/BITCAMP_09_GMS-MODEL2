@@ -22,10 +22,6 @@ public class AdminController extends HttpServlet {
 		case MOVE :
 				Carrier.forward(request, response);
 			break;
-		case LIST:
-			System.out.println("--LIST--");
-			Carrier.forward(request, response);
-			break;
 		case RETRIEVE:
 			System.out.println("--RETRIEVE--");
 			Carrier.forward(request, response);
@@ -35,7 +31,7 @@ public class AdminController extends HttpServlet {
 			Carrier.forward(request, response);
 			break;	
 		case COUNT:
-			MemberServiceImpl.getInstance().memberCount();
+			MemberServiceImpl.getInstance().count();
 		default : 
 				Carrier.redirect(request, response, "");
 			break;

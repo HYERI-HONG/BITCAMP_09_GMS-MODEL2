@@ -29,11 +29,6 @@ public class MemberController extends HttpServlet {
 			System.out.println("--------------Controller : join ---------------");
 			Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
 			break;
-		case LIST:
-			System.out.println("--------------Controller : list ---------------");
-			System.out.println("전체 멤버 목록\n"+request.getAttribute("list"));
-			Carrier.forward(request, response);
-			break;
 		case SEARCH:
 			System.out.println("--------------Controller : search ---------------");
 			System.out.println("팀 별 멤버 목록\n"+request.getAttribute("search"));

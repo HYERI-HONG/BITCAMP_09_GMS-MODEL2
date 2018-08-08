@@ -39,7 +39,7 @@
 				router.move({
 					context : x,
 					domain : 'admin',
-					action:'list',
+					action:'search',
 					page : 'main',
 				});
 			/*	var isAdmin = confirm("관리자 입니까?");
@@ -96,7 +96,7 @@
 							j,'cursor fontColorBlue'
 					);
 					j.addEventListener('click',function(){
-						location.href =x+"/admin.do?action=list&page=main&pageNum="+this.getAttribute('id');
+						location.href =x+"/admin.do?action=search&page=main&pageNum="+this.getAttribute('id');
 					});
 				}
 				

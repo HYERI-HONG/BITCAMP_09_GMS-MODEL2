@@ -25,7 +25,7 @@ public class DeleteCommand extends Command {
 			MemberBean member = new MemberBean();
 			member.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());
 			member.setPassword(request.getParameter("password"));
-			MemberServiceImpl.getInstance().deleteMember(member);
+			MemberServiceImpl.getInstance().remove(member);
 			request.getSession().invalidate();
 			break;
 		default:

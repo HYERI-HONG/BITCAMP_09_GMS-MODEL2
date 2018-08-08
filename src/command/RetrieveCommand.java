@@ -22,12 +22,12 @@ public class RetrieveCommand extends Command {
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			request.setAttribute("retrive", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+			request.setAttribute("retrive", MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			break;
 		case ADMIN:
 			System.out.println("-----retrieve command-----");
 			List <MemberBean> list = new ArrayList<>();
-			list.add(MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+			list.add(MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			request.setAttribute("list",list);
 			break;
 		default:

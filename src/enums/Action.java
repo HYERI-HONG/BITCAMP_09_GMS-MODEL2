@@ -5,7 +5,6 @@ public enum Action {
 	LOGIN,
 	JOIN,
 	CREATE,
-	LIST,
 	SEARCH,
 	RETRIEVE,
 	UPDATE,

@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface MemberService {
-	public void createMember(MemberBean member);
-	public List<MemberBean> memberList();
-	public List<MemberBean> getList(Map<?,?>param);
-	public List<MemberBean> findByWord(String word);
-	public MemberBean findById(String id);
-	public int memberCount();
-	public void updateMember(MemberBean member);
-	public void deleteMember(MemberBean member);
+	public void create(MemberBean member);
+	public List<MemberBean> search(Map<?,?> param);
+	public MemberBean retrieve(String id);
+	public int count();
+	public void modify(Map<?,?> param);
+	public void remove(MemberBean member);
 	public boolean login(MemberBean member);
 }

@@ -32,7 +32,7 @@ public class CreateCommand extends Command{
 			//member.setSubject(ParamMap.getValues(request, "subject"));
 			System.out.println("CreateCommand subject : "+ ParamMap.getValues(request, "subject"));
 			
-			MemberServiceImpl.getInstance().createMember(member);
+			MemberServiceImpl.getInstance().create(member);
 			
 			System.out.println("ID : "+member.getUserId()+"\nPass : "+member.getPassword());
 			System.out.println("Name : "+member.getName()+"\nSSN : "+member.getSsn());

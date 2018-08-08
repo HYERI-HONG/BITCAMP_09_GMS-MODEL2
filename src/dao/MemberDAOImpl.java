@@ -24,7 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	
 	@Override
-	public void insertMember(MemberBean member) {
+	public void insert(MemberBean member) {
 		try {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
@@ -44,55 +44,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 	}
 	@Override
-	public List<MemberBean> selectAllMember() {
-		List<MemberBean> list = new ArrayList<>();
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(MemberQuery.SELECT_ALL.toString());
-			MemberBean member = null;
-			while(rs.next()) {
-				member = new MemberBean();
-				member.setUserId(rs.getString("USERID"));
-				member.setGender(rs.getString("GENDER"));
-				member.setName(rs.getString("NAME"));
-				member.setAge(rs.getString("AGE"));
-				member.setRoll(rs.getString("ROLL"));
-				member.setTeamId(rs.getString("TEAMID"));
-				list.add(member);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-	
-	@Override
-	public List<MemberBean> selectList(Map<?, ?> param) {
-	/*List<MemberBean> list = new ArrayList<>();
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(), 
-							(String) param.get("beginRow"),
-							(String) param.get("endRow")));
-			MemberBean member = null;
-			while(rs.next()) {
-				member = new MemberBean();
-				member.setUserId(rs.getString("USERID"));
-				member.setGender(rs.getString("GENDER"));
-				member.setName(rs.getString("NAME"));
-				member.setAge(rs.getString("AGE"));
-				member.setRoll(rs.getString("ROLL"));
-				member.setTeamId(rs.getString("TEAMID"));
-				list.add(member);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-		
+	public List<MemberBean> selectSome(Map<?, ?> param) {	
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
@@ -108,7 +60,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return list;
 	}
 	@Override
-	public MemberBean selectMemberById(String id) {
+	public MemberBean selectOne(String id) {
 		MemberBean member = new MemberBean();
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
@@ -132,8 +84,8 @@ public class MemberDAOImpl implements MemberDAO {
 		return member;
 	}
 	
-	@Override
-	public List<MemberBean> selectMemberByWord(String word) {
+/*	@Override
+	public List<MemberBean> selectSome(String word) {
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
@@ -145,10 +97,10 @@ public class MemberDAOImpl implements MemberDAO {
 			list.add((MemberBean)s);
 		}
 		return list;
-	}
+	}*/
 
 	@Override
-	public int memberCount() {
+	public int count() {
 		int count=0;
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
@@ -165,19 +117,19 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void updateMember(MemberBean member) {
+	public void update(Map<?,?> param) {
 		try {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.UPDATE.toString(),member.getPassword().split("/")[1],member.getTeamId(),member.getRoll(),member.getUserId(),member.getPassword().split("/")[0]));
+			.executeUpdate(String.format(MemberQuery.UPDATE.toString(),param.get("after_pass"),param.get("teamid"),param.get("roll"),param.get("userid"),param.get("before_pass")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void deleteMember(MemberBean member) {
+	public void delete(MemberBean member) {
 		try {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()

@@ -16,7 +16,7 @@ public class CountCommand extends Command {
 	public void execute() {
 		System.out.println("-----------count command--------------");
 		//request hash map의 일종
-		request.setAttribute("count",MemberServiceImpl.getInstance().memberCount());
+		request.setAttribute("count",MemberServiceImpl.getInstance().count());
 		super.execute();
 	}
 }

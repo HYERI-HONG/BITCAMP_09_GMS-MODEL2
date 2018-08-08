@@ -1,7 +1,8 @@
 package command;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-
 import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
@@ -19,14 +20,13 @@ public class UpdateCommand extends Command {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("-----------update command--------------");
-			MemberBean member =new MemberBean();
-			member.setUserId(((MemberBean)request.getSession().getAttribute("user")).getUserId());
-			member.setPassword(String.format("%s/%s"
-					,request.getParameter("before_pass")
-					,request.getParameter("after_pass")));
-			member.setTeamId(request.getParameter("teamId"));
-			member.setRoll(request.getParameter("roll"));
-			MemberServiceImpl.getInstance().updateMember(member);
+			Map<String,Object> param = new HashMap<>();
+			param.put("userid", ((MemberBean)request.getSession().getAttribute("user")).getUserId());
+			param.put("before_pass", request.getParameter("before_pass"));
+			param.put("after_pass", request.getParameter("after_pass"));
+			param.put("teamid", request.getParameter("teamId"));
+			param.put("roll", request.getParameter("roll"));
+			MemberServiceImpl.getInstance().modify(param);
 			break;
 		default:
 			break;
