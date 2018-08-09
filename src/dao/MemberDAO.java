@@ -7,8 +7,8 @@ import domain.*;
 
 public interface MemberDAO {
 	public void insert(MemberBean member);
-	public List<MemberBean> selectSome(Map<?,?> param);
-	public MemberBean selectOne(String id);
+	public List<MemberBean> search(Map<?,?> param);
+	public MemberBean retrieve(String id);
 	public int count();
 	public void update(Map<?,?> param);
 	public void delete(MemberBean member);

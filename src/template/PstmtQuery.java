@@ -58,6 +58,4 @@ public class PstmtQuery extends QueryTemplate{
 			
 		
 	}
-
-
 }

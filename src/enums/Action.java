@@ -1,13 +1,12 @@
 package enums;
 
 public enum Action {
-	MOVE,
-	LOGIN,
-	JOIN,
-	CREATE,
+	ADD,
 	SEARCH,
 	RETRIEVE,
-	UPDATE,
-	DELETE,
-	COUNT
+	MODIFY,
+	REMOVE,
+	COUNT,
+	MOVE,
+	LOGIN
 }

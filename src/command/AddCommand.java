@@ -5,9 +5,9 @@ import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class CreateCommand extends Command{
+public class AddCommand extends Command{
 	//생성자
-	public CreateCommand(HttpServletRequest request) {
+	public AddCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -32,7 +32,7 @@ public class CreateCommand extends Command{
 			//member.setSubject(ParamMap.getValues(request, "subject"));
 			System.out.println("CreateCommand subject : "+ ParamMap.getValues(request, "subject"));
 			
-			MemberServiceImpl.getInstance().create(member);
+			MemberServiceImpl.getInstance().add(member);
 			
 			System.out.println("ID : "+member.getUserId()+"\nPass : "+member.getPassword());
 			System.out.println("Name : "+member.getName()+"\nSSN : "+member.getSsn());

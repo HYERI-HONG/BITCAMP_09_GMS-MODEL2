@@ -29,7 +29,7 @@ public class MemberDAOImpl implements MemberDAO {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.INSERT_MEMBER.toString(),
+			.executeUpdate(String.format(MemberQuery.INSERT.toString(),
 					member.getUserId(),
 					member.getName(),
 					member.getPassword(),
@@ -44,7 +44,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 	}
 	@Override
-	public List<MemberBean> selectSome(Map<?, ?> param) {	
+	public List<MemberBean> search(Map<?, ?> param) {	
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
@@ -60,13 +60,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return list;
 	}
 	@Override
-	public MemberBean selectOne(String id) {
+	public MemberBean retrieve(String id) {
 		MemberBean member = new MemberBean();
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERNAME,DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_ONE.toString(),id));
+					.executeQuery(String.format(MemberQuery.SEARCH.toString(),id));
 			while(rs.next()) {
 				member.setUserId(rs.getString("USERID"));
 				member.setTeamId(rs.getString("TEAMID"));
@@ -106,7 +106,7 @@ public class MemberDAOImpl implements MemberDAO {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeQuery(MemberQuery.COUNT_MEMBER.toString());
+			.executeQuery(MemberQuery.COUNT.toString());
 			while(rs.next()) {
 				count = rs.getInt("COUNT");
 			}	

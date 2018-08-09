@@ -1,7 +1,13 @@
 package enums;
 
+import template.ColumnFinder;
+
 public enum MemberQuery {
-	LOGIN,INSERT_MEMBER,COUNT_MEMBER,UPDATE,DELETE, SELECT_ALL, SELECT_ONE;
+	INSERT,
+	LIST, SEARCH,RETRIEVE,COUNT,
+	UPDATE,
+	DELETE,
+	LOGIN;
 	
 	@Override
 	public String toString() {
@@ -9,51 +15,51 @@ public enum MemberQuery {
 		String query ="";
 		switch(this) {
 		case LOGIN :
-			query="SELECT USERID,TEAMID,NAME,"
-					+ "SSN,ROLL,PASSWORD,GENDER FROM MEMBER "
-					+ "WHERE USERID LIKE '%s'"
-					+ "AND PASSWORD LIKE '%s'";
+			query = " SELECT" +
+					ColumnFinder.find(Domain.MEMBER) 
+					+ " FROM MEMBER"
+					+ " WHERE USERID LIKE ?"
+					+ " AND PASSWORD LIKE ?";
 			break;
-		case INSERT_MEMBER:
-			query="INSERT INTO MEMBER(USERID,NAME,PASSWORD,SSN,AGE,GENDER,TEAMID,ROLL)"
-					+ "VALUES('%s','%s','%s','%s','%s','%s','%s','%s')";
+		case INSERT:
+			query = " INSERT INTO MEMBER( "
+					+ ColumnFinder.find(Domain.MEMBER) 
+					+ " )"
+					+ " VALUES(?,?,?,?,?,?,?,?,?) ";
 			break;
-		case COUNT_MEMBER:
-			query="SELECT COUNT(*) AS COUNT FROM MEMBER";
+		case COUNT:
+			query = " SELECT COUNT(*) AS COUNT FROM MEMBER";
 			break;
 		case UPDATE:
-			query="UPDATE MEMBER SET PASSWORD = '%s',TEAMID = '%s',ROLL='%s'" + 
-					" WHERE USERID LIKE '%s'" +
-					" AND PASSWORD LIKE '%s'";
+			query = " UPDATE MEMBER SET %s = ?" 
+					+ " WHERE USERID LIKE ?";
 			break;
 		case DELETE :
-			query ="DELETE FROM MEMBER" + 
-					" WHERE USERID LIKE '%s'" + 
-					"AND PASSWORD LIKE '%s'";
+			query = " DELETE FROM MEMBER" 
+					+ " WHERE USERID LIKE ?" 
+					+ " AND PASSWORD LIKE ?";
 			break;
-		case SELECT_ALL : 
-			query="SELECT" + 
-					" USERID," + 
-					" TEAMID," + 
-					" NAME," + 
-					" AGE," + 
-					" GENDER," + 
-					" ROLL" + 
-					" FROM MEMBER"+
-					" ORDER BY USERID";
+		case LIST :
+			query = " SELECT T.* " 
+					+ " FROM(SELECT ROWNEM SEQ, M.*" 
+					+ " FROM MEMBER M "
+					+ " ORDER BY SEQ DESC) T" 
+					+ " WHERE T.SEQ BETWEEN ? AND ?";
+			break;
+		case SEARCH : 
+			query = " SELECT T.* " 
+					+ " FROM(SELECT ROWNEM SEQ, M.*" 
+					+ " FROM MEMBER M "
+					+ " WHERE %s LIKE ?" 
+					+ " ORDER BY SEQ DESC) T" 
+					+ " WHERE T.SEQ BETWEEN ? AND ?";
 			break;	
-		case SELECT_ONE:
-			query ="SELECT" + 
-					"    USERID," + 
-					"    TEAMID," + 
-					"    NAME," + 
-					"    AGE," + 
-					"    ROLL," + 
-					"    PASSWORD," + 
-					"    SSN," +
-					"    GENDER" +
-					" FROM MEMBER" + 
-					" WHERE USERID LIKE '%s'";
+		case RETRIEVE:
+			query = " SELECT" + 
+					ColumnFinder.find(Domain.MEMBER)
+					+ " FROM MEMBER WHERE USERID LIKE ?";
+			break;
+		default:
 			break;
 		}
 		return query;

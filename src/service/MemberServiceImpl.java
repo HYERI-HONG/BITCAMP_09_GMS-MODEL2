@@ -10,16 +10,16 @@ public class MemberServiceImpl implements MemberService {
 	private MemberServiceImpl() {}
 	
 	@Override
-	public void create(MemberBean member) {
+	public void add(MemberBean member) {
 		MemberDAOImpl.getInstance().insert(member);
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
-		return MemberDAOImpl.getInstance().selectSome(param);
+		return MemberDAOImpl.getInstance().search(param);
 	}
 	@Override
 	public MemberBean retrieve(String id) {
-		return MemberDAOImpl.getInstance().selectOne(id);
+		return MemberDAOImpl.getInstance().retrieve(id);
 	}
 	@Override
 	public int count() {
@@ -37,6 +37,4 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(MemberBean member) {
 		return (MemberDAOImpl.getInstance().login(member)!=null);
 	}
-
-
 }

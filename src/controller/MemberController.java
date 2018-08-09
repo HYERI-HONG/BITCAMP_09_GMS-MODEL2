@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import command.Carrier;
-import command.Sentry;
+import command.Receiver;
 import enums.Action;
 
 
@@ -18,39 +18,31 @@ public class MemberController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		System.out.println("--------------Controller------------");
-		Sentry.init(request, response);
+		Receiver.init(request, response);
 		
-		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())){
-		case MOVE :
-			System.out.println("--------------Controller : move ---------------");
-			Carrier.forward(request, response);
-			break;
-		case JOIN:  
+		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())){
+		
+		case ADD:  
 			System.out.println("--------------Controller : join ---------------");
 			Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
 			break;
-		case SEARCH:
+		case SEARCH:case RETRIEVE:
 			System.out.println("--------------Controller : search ---------------");
-			System.out.println("팀 별 멤버 목록\n"+request.getAttribute("search"));
-			Carrier.redirect(request, response,"");
-			break;
-		case RETRIEVE:
 			System.out.println("--------------Controller : retrieve ---------------");
-			System.out.println("해당 ID의 멤버 목록\n"+request.getAttribute("retrive"));
-			Carrier.redirect(request, response,"");
-			break;
-		case COUNT:
-			System.out.println("--------------Controller : count ---------------");
-			System.out.println("전체 멤버 수\n"+request.getAttribute("count"));
+			System.out.println("팀 별 멤버 목록\n"+request.getAttribute("search"));
 			Carrier.forward(request, response);
 			break;
-		case UPDATE:
+		case MODIFY:
 			System.out.println("--------------Controller : update ---------------");
 			Carrier.forward(request, response);
 			break;
-		case DELETE:
+		case REMOVE:
 			System.out.println("--------------Controller : delete ---------------");
 			Carrier.redirect(request, response,"");
+			break;
+		case MOVE :
+			System.out.println("--------------Controller : move ---------------");
+			Carrier.forward(request, response);
 			break;
 		case LOGIN:
 			System.out.println("--------------Controller : login ---------------");

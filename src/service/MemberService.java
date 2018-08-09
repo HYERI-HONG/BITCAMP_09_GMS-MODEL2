@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface MemberService {
-	public void create(MemberBean member);
+	public void add(MemberBean member);
 	public List<MemberBean> search(Map<?,?> param);
 	public MemberBean retrieve(String id);
 	public int count();

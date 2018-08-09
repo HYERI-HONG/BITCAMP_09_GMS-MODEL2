@@ -8,9 +8,7 @@
 		</ul>
 </div> 
 <script>
-document.getElementById('moveToAdminMain').addEventListener('click',function(){
-	admin.check('${context}');
-})
+
 document.getElementById("goHome").addEventListener('click',function(){ //콜백함수
 	router.move({context : '${context}',
 		domain : 'common'}
