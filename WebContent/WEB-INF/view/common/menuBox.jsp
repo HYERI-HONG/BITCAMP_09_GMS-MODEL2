@@ -7,13 +7,5 @@
 			<li><a id="moveToAdminMain">ADMIN</a></li>
 		</ul>
 </div> 
-<script>
-
-document.getElementById("goHome").addEventListener('click',function(){ //콜백함수
-	router.move({context : '${context}',
-		domain : 'common'}
-		);
-});
-</script>
 
 

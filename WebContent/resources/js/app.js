@@ -48,14 +48,30 @@
 								action:'search',
 								page : 'main',
 							});
-							
 						}else{
 							alert('관리자 외에 접근이 불가합니다.');
 						}
 					}
 				});
-			}
-			
+				document.getElementById("goHome").addEventListener('click',function(){ //콜백함수
+					router.move({context : x,
+						domain : 'common'}
+						);
+				});	
+				document.getElementById("moveLogin").addEventListener('click',function(){ //콜백함수
+					router.move({context : x,
+						domain : 'member',
+						action : 'move',
+						page : 'login'});
+				});
+
+				document.getElementById("moveJoin").addEventListener('click',function(){ 
+					router.move({context : x,
+								domain : 'member',
+								action : 'move',
+								page : 'add'});
+				});
+			}					
 		};
 	})();
 	var admin = (()=>{
@@ -82,7 +98,7 @@
 						'search_button '
 						);
 					
-				
+				//아이디를 입력하면 retrieve로, 팀아이디를 입력하면 search로
 				document.getElementById('searchButton').addEventListener('click',function(){
 					location.href = (document.getElementById('searchOption').value==='userId')? 
 							x+"/admin.do?action=retrieve&page=main&userid="
@@ -91,16 +107,18 @@
 							x+"/admin.do?action=search&page=main&searchWord="+document.getElementById('searchWord').value
 									+"&searchOption="+document.getElementById('searchOption').value;
 				});
-				
+				//이름을 누르면 마이페이지로 이동
 				for(var i of document.querySelectorAll('.username')){
 					service.addClass(
 							i,'cursor fontColorBlue'
 					);
 					i.addEventListener('click',function(){
-						location.href =x+"/admin.do?action=retrieve&page=memberDetail&userid="+this.getAttribute('id');
+						location.href =x+"/admin.do?action=retrieve&page=retrieve&userid="+this.getAttribute('id');
 					});
 					
 				}
+				
+				//페이지네이션
 				for(var j of document.querySelectorAll('.changePage')){
 					service.addClass(
 							j,'cursor fontColorBlue'
@@ -185,8 +203,29 @@
 			join : x=>{
 				member.setAge(x);
 				member.setGender(x);
+				
+			},
+			main : x=>{
+				document.getElementById('LoginFormBtn').addEventListener('click',function(){
+					var a = service.nullChecker([
+						document.loginForm.userid.value,
+						document.loginForm.password.value]);
+					var form = document.getElementById('loginForm');
+					
+					var node = document.createElement('input');
+					node.innerHTML='<input type="hidden" name="action" value="login"/>';
+					form.appendChild(node);
+					
+					if(a.checker){
+						form.action = x+"/member.do";
+						form.method = "post";
+						form.submit();		
+					}
+					else{
+						alert(a.text);
+					}
+				});
 			}
-			
 		}
 	})();
 		

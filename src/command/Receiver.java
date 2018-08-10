@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Receiver {
 	public static Command cmd=new Command();
 	public static void init(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("----------2.reciver----------");
+		System.out.println("2.Reciver");
 		cmd = Commander.order(request, response);
 	}
 }

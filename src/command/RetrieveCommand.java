@@ -25,7 +25,7 @@ public class RetrieveCommand extends Command {
 			request.setAttribute("retrive", MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			break;
 		case ADMIN:
-			System.out.println("-----------4.retrieve command--------------");
+			System.out.println("4.retrieve command");
 			List <MemberBean> list = new ArrayList<>();
 			list.add(MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			request.setAttribute("list",list);

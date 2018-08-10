@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<form action=""></form>
-<a href=""></a>
-
 
 <jsp:include page="../common/head.jsp"/>
 <div id="admin_content_box">
@@ -30,8 +27,6 @@
 		<tr>
 			<td>${member.userId}</td>
 			<td><a class="username" id="${member.userId}">${member.name}</a></td>
-			<%-- <td><a style="cursor: pointer; 
-			"location.href="${context}/admin.do?action=retrieve&page=memberDetail&userid=${member.userid}">${member.name}</a></td> --%>
 			<td>${member.age}</td>
 			<td>${member.gender}</td>
 			<td>${member.roll}</td>
@@ -61,5 +56,4 @@
 
 <script>
 	admin.main('${context}');
-	
 </script>

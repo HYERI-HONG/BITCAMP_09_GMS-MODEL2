@@ -9,36 +9,32 @@ public class Commander{
 	public static Command order(HttpServletRequest request, HttpServletResponse response) {
 		Command cmd = null;
 		switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
-		
 		case ADD:
-			System.out.println("----------3.commander : add----------");
+			System.out.println("3.commander : add");
 			cmd = new AddCommand(request);
 			break;
 		case SEARCH:
-			System.out.println("----------3.commander : search----------");
+			System.out.println("3.commander : search");
 			cmd = new SearchCommand(request);
 			break;
 		case RETRIEVE:
-			System.out.println("----------3.commander : retrieve----------");
+			System.out.println("3.commander : retrieve");
 			cmd = new RetrieveCommand(request);
 			break;
 		case MODIFY :
-			System.out.println("----------3.commander : modify----------");
+			System.out.println("3.commander : modify");
 			cmd = new ModifyCommand(request);
 			break;
 		case REMOVE :
-			System.out.println("----------3.commander : delete----------");
+			System.out.println("3.commander : delete");
 			cmd = new RemoveCommand(request);
 			break;
-		case COUNT :
-			cmd = new CountCommand(request);
-			break;
 		case LOGIN :
-			System.out.println("----------3.commander : login----------");
+			System.out.println("3.commander : login");
 			cmd = new LoginCommand(request);
 			break;
 		case MOVE:
-			System.out.println("----------3.commander : Move----------");
+			System.out.println("3.commander : Move");
 			cmd = new MoveCommand(request);
 			break;
 		default:

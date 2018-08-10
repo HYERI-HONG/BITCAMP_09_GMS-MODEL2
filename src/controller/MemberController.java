@@ -17,39 +17,38 @@ public class MemberController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println("--------------Controller------------");
+		System.out.println("1.Member Controller");
 		Receiver.init(request, response);
+		System.out.println("9.Member Controller");
 		
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())){
 		
 		case ADD:  
-			System.out.println("--------------Controller : join ---------------");
+			System.out.println("10.Controller : add");
 			Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
 			break;
 		case SEARCH:case RETRIEVE:
-			System.out.println("--------------Controller : search ---------------");
-			System.out.println("--------------Controller : retrieve ---------------");
-			System.out.println("팀 별 멤버 목록\n"+request.getAttribute("search"));
+			System.out.println("10.Controller : search/retrieve");
 			Carrier.forward(request, response);
 			break;
 		case MODIFY:
-			System.out.println("--------------Controller : update ---------------");
+			System.out.println("10.Controller : modify");
 			Carrier.forward(request, response);
 			break;
 		case REMOVE:
-			System.out.println("--------------Controller : delete ---------------");
+			System.out.println("10.Controller : remove");
 			Carrier.redirect(request, response,"");
 			break;
 		case MOVE :
-			System.out.println("--------------Controller : move ---------------");
+			System.out.println("10.Controller : move");
 			Carrier.forward(request, response);
 			break;
 		case LOGIN:
-			System.out.println("--------------Controller : login ---------------");
+			System.out.println("10.Controller : login");
 			if(request.getAttribute("match").equals("TRUE")) {
 				Carrier.forward(request, response);
 			}else {
-				Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
+				Carrier.redirect(request, response,"/member.do?action=move&page=login");
 			}
 			break;
 		default :

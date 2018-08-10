@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!doctype html>
-<html lang="en">
 <jsp:include page="../common/head.jsp"/>
 
 <body>
@@ -43,8 +41,7 @@
 				<td>역         할</td>
 				<td>${user.roll}</td>
 			</tr>
-		
-			</table>	
+			</table>
 			<h4 align="center"><a id='myPageMoveToUpdate'>회원 정보 수정  </a>/<a id='myPageMoveToDelete'>  회원 탈퇴</a></h4>
 		</div>
 	
@@ -68,4 +65,3 @@
 	});
 	</script>
 </body>
-</html>

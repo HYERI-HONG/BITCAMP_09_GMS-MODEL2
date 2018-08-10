@@ -15,7 +15,7 @@ public enum MemberQuery {
 		String query ="";
 		switch(this) {
 		case LOGIN :
-			query = " SELECT" +
+			query = " SELECT " +
 					ColumnFinder.find(Domain.MEMBER) 
 					+ " FROM MEMBER"
 					+ " WHERE USERID LIKE ?"
@@ -41,21 +41,21 @@ public enum MemberQuery {
 			break;
 		case LIST :
 			query = " SELECT T.* " 
-					+ " FROM(SELECT ROWNEM SEQ, M.*" 
-					+ " FROM MEMBER M "
+					+ " FROM(SELECT ROWNUM SEQ, M.*" 
+					+ " FROM %s M "
 					+ " ORDER BY SEQ DESC) T" 
 					+ " WHERE T.SEQ BETWEEN ? AND ?";
 			break;
 		case SEARCH : 
 			query = " SELECT T.* " 
-					+ " FROM(SELECT ROWNEM SEQ, M.*" 
-					+ " FROM MEMBER M "
+					+ " FROM(SELECT ROWNUM SEQ, M.*" 
+					+ " FROM %s M "
 					+ " WHERE %s LIKE ?" 
 					+ " ORDER BY SEQ DESC) T" 
 					+ " WHERE T.SEQ BETWEEN ? AND ?";
 			break;	
 		case RETRIEVE:
-			query = " SELECT" + 
+			query = " SELECT " + 
 					ColumnFinder.find(Domain.MEMBER)
 					+ " FROM MEMBER WHERE USERID LIKE ?";
 			break;
