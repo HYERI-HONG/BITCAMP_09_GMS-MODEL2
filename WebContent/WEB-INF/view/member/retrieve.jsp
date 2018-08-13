@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <jsp:include page="../common/head.jsp"/>
 
-<body>
-	<div id="wrapper">
-		<div id="menu_header">
-			<jsp:include page="../common/titleBox.jsp" />
-			<jsp:include page="../common/menuBox.jsp" />
-		</div>
-		
+<div id="contentBox">
 		<div id="mypage_content">
 		<h3 align="center">마이페이지</h3>
 			<table id="mypage">
@@ -44,24 +37,22 @@
 			</table>
 			<h4 align="center"><a id='myPageMoveToUpdate'>회원 정보 수정  </a>/<a id='myPageMoveToDelete'>  회원 탈퇴</a></h4>
 		</div>
-	
-		<div id="mypage_footer">
-			<jsp:include page="../common/footerBox.jsp"/>
-		</div>	
-	</div>
-	
-	<script>
+</div>
+
+
+
+<script>
 	document.getElementById('myPageMoveToUpdate').addEventListener('click',function(){
 		router.move({context : '${context}',
 			domain : 'member',
 			action : 'move',
-			page : 'update_form'});
+			page : 'modify'});
 	});
 	document.getElementById('myPageMoveToDelete').addEventListener('click',function(){
 		router.move({context : '${context}',
 			domain : 'member',
 			action : 'move',
-			page : 'delete_form'});
+			page : 'remove'});
 	});
-	</script>
-</body>
+</script>
+

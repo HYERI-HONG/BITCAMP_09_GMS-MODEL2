@@ -37,6 +37,11 @@ public class Commander{
 			System.out.println("3.commander : Move");
 			cmd = new MoveCommand(request);
 			break;
+		case FILEUPLOAD:
+			System.out.println("3.commander : Fileupload");
+			cmd = new FileCommand(request);
+			break;
+			
 		default:
 			break;
 		}

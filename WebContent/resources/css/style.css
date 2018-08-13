@@ -59,15 +59,9 @@ div#header h1{
 	}
 div#content{
 	padding: 15px 30px 15px 30px;
-	background-color: #fff;
-	background-image : url('../img/home/main.jpg');
-	margin-bottom: 30px;
-	min-height: 400px;
-}
-div#admin_content{
-	padding: 15px 30px 15px 30px;
 	background-color: #005580;
-	margin-bottom: 50px;
+	/* background-image : url('../img/home/main.jpg'); */
+	margin-bottom: 30px;
 	min-height: 400px;
 }
 div#admin_content_box{

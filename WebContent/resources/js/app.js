@@ -113,7 +113,7 @@
 							i,'cursor fontColorBlue'
 					);
 					i.addEventListener('click',function(){
-						location.href =x+"/admin.do?action=retrieve&page=retrieve&userid="+this.getAttribute('id');
+						location.href =x+"/member.do?action=retrieve&page=main&userid="+this.getAttribute('id');
 					});
 					
 				}

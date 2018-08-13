@@ -11,7 +11,6 @@
 		<jsp:include page="../common/menuBox.jsp" />
 	</div>
 	<div id="content">
-	이동 페이지 : ${pagename}
 		    <c:choose>
             <c:when test="${pagename eq 'add'}">
                 <jsp:include page="add.jsp"/>
@@ -19,8 +18,14 @@
             <c:when test="${pagename eq 'login'}">
                 <jsp:include page="login.jsp"/>
             </c:when>
-            <c:when test="${pagename eq'search'}">
+            <c:when test="${pagename eq 'search'}">
                 <jsp:include page="search.jsp" />
+            </c:when>
+            <c:when test="${pagename eq 'modify'}">
+                <jsp:include page="modify.jsp" />
+            </c:when>
+            <c:when test="${pagename eq 'remove'}">
+                <jsp:include page="remove.jsp" />
             </c:when>
         <c:otherwise>
             <jsp:include page="retrieve.jsp"/>

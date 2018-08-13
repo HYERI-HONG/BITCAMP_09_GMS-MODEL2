@@ -12,7 +12,6 @@ public class SearchCommand extends Command {
 	public SearchCommand(HttpServletRequest request) {
 		setRequest(request);
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		execute();
 	}
@@ -42,6 +41,7 @@ public class SearchCommand extends Command {
 			request.setAttribute("list",
 					MemberServiceImpl.getInstance()
 					.search(param));	
+			request.setAttribute("pagename", "search");
 			break;
 		default:
 			break;

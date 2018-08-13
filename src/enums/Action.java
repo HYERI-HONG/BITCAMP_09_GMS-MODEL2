@@ -8,5 +8,6 @@ public enum Action {
 	REMOVE,
 	COUNT,
 	MOVE,
-	LOGIN
+	LOGIN,
+	FILEUPLOAD
 }

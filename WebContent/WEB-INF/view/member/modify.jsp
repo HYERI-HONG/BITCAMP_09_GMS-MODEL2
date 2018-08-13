@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-	<jsp:include page="../common/head.jsp"/>
-<body>
-	<div id="wrapper">
-	
-		<div id="menu_header">
-			<jsp:include page="../common/titleBox.jsp" />
-			<jsp:include page="../common/menuBox.jsp" />
-		</div>
-		
+<jsp:include page="../common/head.jsp"/>
+
+	<div id="contentBox">
 		<div id="update_content">
 			<h2 align="center">회원 정보 변경</h2>
 			<form id ="updateForm" name="updateForm">
@@ -43,11 +35,12 @@
 			<input type="button" id=updateConfirmBtn value ="변경" />
 			</form>
 		</div>
-		
-		<div id="menu_footer">
-			<jsp:include page="../common/footerBox.jsp"/>
-		</div>	
 	</div>
+	
+	<form method="POST" enctype="multipart/form-data" action="${context}/member.do?action=fileupload&page=retrieve">
+	  파일 업로드: <input type="file" name="upfile"><br/>
+ 	<input type="submit" value="파일 업로드">
+	</form>
 	
 	<script>
 	var roll = document.getElementById('roll');
@@ -89,8 +82,7 @@
 		
 	});
 	</script>
-</body>
-</html>
+
 
 
 
