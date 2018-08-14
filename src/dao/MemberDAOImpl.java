@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.*;
 import java.util.*;
 import domain.MemberBean;
 import template.*;
@@ -10,12 +9,11 @@ public class MemberDAOImpl implements MemberDAO {
 
 	private static MemberDAO  instance = new MemberDAOImpl();
 	public static MemberDAO getInstance() {return instance;}
-	Statement state;
-	Connection conn;
 	private QueryTemplate q;
 	private MemberDAOImpl(){}
 	@Override
 	public void insert(MemberBean member) {
+		//map.put("domain","MEMBER");
 		System.out.println("6.MemberDAO  :  insert");
 	}
 	@Override
@@ -35,6 +33,7 @@ public class MemberDAOImpl implements MemberDAO {
 		q = new RetrieveQuery();
 		Map<String,Object> map = new HashMap<>();
 		map.put("value", word);
+		map.put("domain", "MEMBER");
 		q.play(map);
 		return (MemberBean) q.getO();
 	}

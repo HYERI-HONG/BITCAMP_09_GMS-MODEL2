@@ -13,5 +13,4 @@ public interface MemberDAO {
 	public void update(Map<?,?> param);
 	public void delete(MemberBean member);
 	public MemberBean login(MemberBean bean);
-	
 }

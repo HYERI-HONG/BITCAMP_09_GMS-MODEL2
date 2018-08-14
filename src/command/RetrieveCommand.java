@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 
@@ -21,7 +22,10 @@ public class RetrieveCommand extends Command {
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			request.setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
+			request.setAttribute("user", MemberServiceImpl.getInstance().retrieve(((MemberBean)request.getSession().getAttribute("user")).getUserId()));
+			Map<String, Object> map = ImageServiceImpl.getInstance().retrieve(((MemberBean)request.getSession().getAttribute("user")).getUserId());
+			String imgPath = "/upload/"+(String)map.get("filename")+"."+(String)map.get("extension");
+			request.setAttribute("imgpath",imgPath);
 			request.setAttribute("pagename", "retrieve");
 			break;
 		case ADMIN:
@@ -30,6 +34,7 @@ public class RetrieveCommand extends Command {
 			list.add(MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			request.setAttribute("list",list);
 			request.setAttribute("pagename", "search");
+			
 			break;
 		default:
 			break;

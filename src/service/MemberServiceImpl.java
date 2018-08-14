@@ -44,4 +44,5 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("5.Memberservice  :  login");
 		return MemberDAOImpl.getInstance().login(member);
 	}
+
 }

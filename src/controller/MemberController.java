@@ -2,8 +2,10 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +22,11 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 import command.Carrier;
 import command.Receiver;
+import domain.MemberBean;
 import enums.Action;
+import enums.Path;
+import service.ImageServiceImpl;
+import service.MemberServiceImpl;
 
 
 @WebServlet("/member.do") 
@@ -89,13 +95,15 @@ public class MemberController extends HttpServlet {
 					FileItem item = (FileItem)iter.next();
 					if(!item.isFormField()) {
 						System.out.println("6.if문 진입 성공");
-						String fieldName = item.getFieldName();
 						String fileName = item.getName();
-						boolean isInMemory = item.isInMemory();
-						long sizeInBytes = item.getSize();
-						file = new File(fileName);
+						file = new File(Path.UPLOAD_PATH+fileName);
 						item.write(file);
 						System.out.println("7.파일 업로드 성공");
+						
+						Map<String,Object> map = new HashMap<>();
+						map.put("img", fileName);
+						map.put("userid",((MemberBean)request.getSession().getAttribute("user")).getUserId());
+						ImageServiceImpl.getInstance().add(map);
 					}else {
 						System.out.println("8.파일 업로드 실패");
 					}
@@ -105,7 +113,7 @@ public class MemberController extends HttpServlet {
 			}
 			
 			System.out.println("File upload finish");
-			Carrier.redirect(request, response, "/member.do?action=move&page=retrieve");
+			Carrier.redirect(request, response, "/member.do?action=retrieve&page=retrieve");
 			break;
 		default :
 			System.out.println("오류 발생");

@@ -11,4 +11,5 @@ public interface MemberService {
 	public void modify(Map<?,?> param);
 	public void remove(MemberBean member);
 	public MemberBean login(MemberBean member);
+	
 }

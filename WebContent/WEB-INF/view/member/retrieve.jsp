@@ -6,7 +6,7 @@
 		<h3 align="center">마이페이지</h3>
 			<table id="mypage">
 			<tr>
-				<td rowspan="3" colspan="2" background="#ff8000"><img src="${img}/mypage/user.png"/></td>
+				<td rowspan="3" colspan="2" background="#ff8000"><img src="${img}${imgpath}"/></td>
 				<td>아   이   디</td>
 				<td>${user.userId}</td>
 			</tr>

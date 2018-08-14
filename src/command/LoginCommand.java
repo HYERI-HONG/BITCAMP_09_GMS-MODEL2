@@ -1,8 +1,11 @@
 package command;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class LoginCommand extends Command{
@@ -19,10 +22,15 @@ public class LoginCommand extends Command{
 			member.setUserId(request.getParameter("userid"));
 			member.setPassword(request.getParameter("password"));
 			MemberBean mem = MemberServiceImpl.getInstance().login(member);
+			
 			if(mem!=null) {
 				System.out.println("login 성공");
 				request.setAttribute("match","TRUE");
 				request.getSession().setAttribute("user",mem);
+				Map<String, Object> map = ImageServiceImpl.getInstance().retrieve(mem.getUserId());
+				String imgPath = "/upload/"+(String)map.get("filename")+"."+(String)map.get("extension");
+				System.out.println("통합된 파일명 : "+ imgPath);
+				request.setAttribute("imgpath",imgPath);
 			}
 			else {
 				request.setAttribute("match", "FALSE");

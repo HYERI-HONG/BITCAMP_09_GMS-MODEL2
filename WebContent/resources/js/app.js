@@ -206,25 +206,27 @@
 				
 			},
 			main : x=>{
-				document.getElementById('LoginFormBtn').addEventListener('click',function(){
-					var a = service.nullChecker([
-						document.loginForm.userid.value,
-						document.loginForm.password.value]);
-					var form = document.getElementById('loginForm');
-					
-					var node = document.createElement('input');
-					node.innerHTML='<input type="hidden" name="action" value="login"/>';
-					form.appendChild(node);
-					
-					if(a.checker){
-						form.action = x+"/member.do";
-						form.method = "post";
-						form.submit();		
-					}
-					else{
-						alert(a.text);
-					}
-				});
+				if(document.getElementById('LoginFormBtn')!=null){
+					document.getElementById('LoginFormBtn').addEventListener('click',function(){
+						var a = service.nullChecker([
+							document.loginForm.userid.value,
+							document.loginForm.password.value]);
+						var form = document.getElementById('loginForm');
+						
+						var node = document.createElement('input');
+						node.innerHTML='<input type="hidden" name="action" value="login"/>';
+						form.appendChild(node);
+						
+						if(a.checker){
+							form.action = x+"/member.do";
+							form.method = "post";
+							form.submit();		
+						}
+						else{
+							alert(a.text);
+						}
+					});
+				}
 			}
 		}
 	})();
