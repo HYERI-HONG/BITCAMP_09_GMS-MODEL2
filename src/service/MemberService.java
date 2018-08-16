@@ -8,7 +8,7 @@ public interface MemberService {
 	public List<MemberBean> search(Map<String,Object> param);
 	public MemberBean retrieve(String word);
 	public int count();
-	public void modify(Map<?,?> param);
+	public void modify(Map<String, Object> param);
 	public void remove(MemberBean member);
 	public MemberBean login(MemberBean member);
 	

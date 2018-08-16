@@ -32,7 +32,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="6">
+			<td colspan="6" id="">
 				<h4>전체 회원 수 : ${page.count}</h4>
 				<ul class="pageBox">
 					<c:if test="${page.existPrev}">

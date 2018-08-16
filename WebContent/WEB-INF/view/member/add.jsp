@@ -54,43 +54,4 @@
 			<jsp:include page="../common/footerBox.jsp"/>
 		</div>	
 </div>
-	
-	
-<script>
-	document.getElementById('JoinFormBtn').addEventListener('click',function(){
-		var x = service.nullChecker([
-			document.joinForm.userid.value,
-			document.joinForm.password.value,
-			document.joinForm.name.value,
-			document.joinForm.ssn.value]);
-		
-		var form = document.getElementById('joinForm');
-		
-		if(x.checker){
-			member.join(form.ssn.value);
-					
-			var arr =[
-				{'name' : 'action','value':'join'},
-				{'name':'age', 'value':member.getAge()},
-				{'name' : 'gender' ,'value' : member.getGender()}
-				];
-			for(var i in arr){
-				var node = document.createElement('input');	
-				node.setAttribute('type', 'hidden');
-				node.setAttribute('name',arr[i].name);
-				node.setAttribute('value',arr[i].value);
-				form.appendChild(node);
-			}
-			alert("성별" + member.getGender());
-			
-			form.action = "${context}/member.do";
-			form.method = "post";
-			form.submit();	
-		}
-		else{
-			alert(x.text);
-		}
-		
-	});
-</script>	
 

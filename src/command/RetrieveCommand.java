@@ -22,16 +22,40 @@ public class RetrieveCommand extends Command {
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			request.setAttribute("user", MemberServiceImpl.getInstance().retrieve(((MemberBean)request.getSession().getAttribute("user")).getUserId()));
-			Map<String, Object> map = ImageServiceImpl.getInstance().retrieve(((MemberBean)request.getSession().getAttribute("user")).getUserId());
+			System.out.println("4.retrieve command : member");
+			Map<String, Object> map =null;
+			if(request.getParameter("clickid")!=null) {
+				request.setAttribute("user", 
+						MemberServiceImpl.
+						getInstance().
+						retrieve(request.getParameter("clickid")));
+				 map = ImageServiceImpl.
+						getInstance().
+						retrieve(request.getParameter("clickid"));
+			}
+			else {
+				request.setAttribute("user", 
+						MemberServiceImpl.
+						getInstance().
+						retrieve(((MemberBean)request.
+								getSession().
+								getAttribute("user")).
+								getUserId()));
+				 map = ImageServiceImpl.
+							getInstance().
+							retrieve(((MemberBean)request.
+									getSession().
+									getAttribute("user")).
+									getUserId());
+			}
 			String imgPath = "/upload/"+(String)map.get("filename")+"."+(String)map.get("extension");
 			request.setAttribute("imgpath",imgPath);
 			request.setAttribute("pagename", "retrieve");
 			break;
 		case ADMIN:
-			System.out.println("4.retrieve command");
+			System.out.println("4.retrieve command : admin");
 			List <MemberBean> list = new ArrayList<>();
-			list.add(MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
+			list.add(MemberServiceImpl.getInstance().retrieve(request.getParameter("searchid")));
 			request.setAttribute("list",list);
 			request.setAttribute("pagename", "search");
 			

@@ -23,16 +23,20 @@ public enum MemberQuery {
 			break;
 		case INSERT:
 			query = " INSERT INTO MEMBER( "
-					+ ColumnFinder.find(Domain.MEMBER) 
+					+ "USERID,SSN,NAME,ROLL,TEAMID,PASSWORD,AGE,GENDER" 
 					+ " )"
-					+ " VALUES(?,?,?,?,?,?,?,?,?) ";
+					+ " VALUES(?,?,?,?,?,?,?,?) ";
 			break;
 		case COUNT:
 			query = " SELECT COUNT(*) AS COUNT FROM MEMBER";
 			break;
 		case UPDATE:
-			query = " UPDATE MEMBER SET %s = ?" 
-					+ " WHERE USERID LIKE ?";
+			query = " UPDATE MEMBER "
+					+ "SET %s = ?," 
+					+ "%s = ?,"
+					+ "%s = ?"
+					+ " WHERE USERID LIKE ?"
+					+ " AND PASSWORD LIKE ?";
 			break;
 		case DELETE :
 			query = " DELETE FROM MEMBER" 

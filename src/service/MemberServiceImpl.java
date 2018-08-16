@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 		return MemberDAOImpl.getInstance().count();
 	}
 	@Override
-	public void modify(Map<?,?> param) {
+	public void modify(Map<String, Object> param) {
 		System.out.println("5.Memberservice  :  modify");
 		MemberDAOImpl.getInstance().update(param);
 	}

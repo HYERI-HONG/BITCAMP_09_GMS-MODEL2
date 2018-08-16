@@ -13,8 +13,19 @@ public class MemberDAOImpl implements MemberDAO {
 	private MemberDAOImpl(){}
 	@Override
 	public void insert(MemberBean member) {
-		//map.put("domain","MEMBER");
 		System.out.println("6.MemberDAO  :  insert");
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid", member.getUserId());
+		map.put("pass", member.getPassword());
+		map.put("name", member.getName());
+		map.put("ssn", member.getSsn());
+		map.put("age", member.getAge());
+		map.put("gender", member.getGender());
+		map.put("teamid", member.getTeamId());
+		map.put("roll", member.getRoll());
+		map.put("domain", "MEMBER");
+		q=new AddQuery();
+		q.play(map);
 	}
 	@Override
 	public List<MemberBean> search(Map<String, Object> param) {	
@@ -45,8 +56,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return q.getNumber();
 	}
 	@Override
-	public void update(Map<?,?> param) {
+	public void update(Map<String, Object> param) {
 		System.out.println("6.MemberDAO  :  update");
+		q=new ModifyQuery();
+		q.play(param);
+		
 	}
 
 	@Override

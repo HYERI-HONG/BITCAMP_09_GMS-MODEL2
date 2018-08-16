@@ -26,7 +26,6 @@ public class ModifyCommand extends Command {
 			param.put("teamid", request.getParameter("teamId"));
 			param.put("roll", request.getParameter("roll"));
 			MemberServiceImpl.getInstance().modify(param);
-			request.setAttribute("pagename", "modify");
 			break;
 		default:
 			break;

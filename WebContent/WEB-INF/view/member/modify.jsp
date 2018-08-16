@@ -11,25 +11,25 @@
 			<input type="text" name="before_pass"/>
 			 <br>
 			변경할 비밀번호 : <br>
-			<input type="text" name="after_pass" />
+			<input type="text" name="after_pass" placeholder="${user.password}"/>
 			
 			<br>
 			소속팀 : <br>
-			<select name="teamId" id="teamId">
-			<option value="GG">지은이랑지은집팀</option>
-			<option value="LP">레츠플레이팀</option>
-			<option value="TurtleKing">거북왕팀</option>
-			<option value="CodingStar">언프리티코딩스타팀</option>
+			<select name="teamId" id="teamId" class="${user.teamId}">
+			<option class="team-opt" value="GG">지은이랑지은집팀</option>
+			<option class="team-opt" value="LP">레츠플레이팀</option>
+			<option class="team-opt" value="TurtleKing">거북왕팀</option>
+			<option class="team-opt" value="CodingStar">언프리티코딩스타팀</option>
 			</select>
 			
 			<br>
 			프로젝트역할 : <br>
-			<select name="roll" id="roll">
-			<option value="프론트 담당">프론트개발</option>
-			<option value="팀장">팀장</option>
-			<option value="백단 담당">백단개발</option>
-			<option value="안드로이드 담당">안드로이드개발</option>
-			<option value="무임승차">무임승차</option>
+			<select name="roll" id="roll" class="${user.roll}">
+			<option class="roll-opt" value="프론트 담당">프론트개발</option>
+			<option class="roll-opt" value="팀장">팀장</option>
+			<option class="roll-opt" value="백단 담당">백단개발</option>
+			<option class="roll-opt" value="안드로이드 담당">안드로이드개발</option>
+			<option class="roll-opt" value="무임승차">무임승차</option>
 			</select>
 			<br><br>
 			<input type="button" id=updateConfirmBtn value ="변경" />
@@ -41,47 +41,6 @@
 	  파일 업로드: <input type="file" name="upfile"><br/>
  	<input type="submit" value="파일 업로드">
 	</form>
-	
-	<script>
-	var roll = document.getElementById('roll');
-	var teamId = document.getElementById('teamId');
-	
-	for(var i=0; i<roll.options.length; i++){
-		if(roll.options[i].value==='${user.roll}'){
-			roll.options[i].setAttribute("selected","selected");
-		}
-	}
-	for(var j=0; j<teamId.options.length; j++){
-		if(teamId.options[j].value==='${user.teamId}'){
-			teamId.options[j].setAttribute("selected","selected");
-		}
-	}
-	
-	document.getElementById('updateConfirmBtn').addEventListener('click',function(){
-		
-		var form = document.getElementById('updateForm');
-		form.action = "${context}/member.do";
-		form.method = "post";
-		
-		var node = document.createElement('input');
-		node.innerHTML='<input type="hidden" name="action" value=update />';
-		form.appendChild(node);
-		
-		if(service.nullChecker([
-			document.updateForm.before_pass.value]).checker){
-			if(service.nullChecker([
-				document.updateForm.after_pass.value]).checker){
-				form.submit();
-			}
-			else{
-				form.after_pass.value = "${user.password}"
-			}	
-		}else{
-			alert("비밀번호를 입력하세요.");
-		} 
-		
-	});
-	</script>
 
 
 

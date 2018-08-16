@@ -10,7 +10,7 @@ public interface MemberDAO {
 	public List<MemberBean> search(Map<String,Object> param);
 	public MemberBean retrieve(String word);
 	public int count();
-	public void update(Map<?,?> param);
+	public void update(Map<String, Object> param);
 	public void delete(MemberBean member);
 	public MemberBean login(MemberBean bean);
 }

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
@@ -26,7 +25,6 @@ import domain.MemberBean;
 import enums.Action;
 import enums.Path;
 import service.ImageServiceImpl;
-import service.MemberServiceImpl;
 
 
 @WebServlet("/member.do") 
@@ -43,7 +41,7 @@ public class MemberController extends HttpServlet {
 		
 		case ADD:  
 			System.out.println("10.Controller : add");
-			Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
+			Carrier.redirect(request, response,"");
 			break;
 		case SEARCH:case RETRIEVE:
 			System.out.println("10.Controller : search/retrieve");
@@ -51,7 +49,7 @@ public class MemberController extends HttpServlet {
 			break;
 		case MODIFY:
 			System.out.println("10.Controller : modify");
-			Carrier.forward(request, response);
+			Carrier.redirect(request, response,"/member.do?action=retrieve&page=main");
 			break;
 		case REMOVE:
 			System.out.println("10.Controller : remove");
