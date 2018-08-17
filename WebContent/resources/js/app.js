@@ -1,7 +1,4 @@
-/**
- * 
- */
-	
+
 	var router=(()=>{
 		return {move : x=>{
 			location.href = x.context+"/"+x.domain+".do?action="+x.action+"&page="+x.page
@@ -37,7 +34,7 @@
 	var common = (()=>{
 		return {
 			main : x=>{
-				document.getElementById('moveToAdminMain').addEventListener('click',function(){
+				document.getElementById('goAdmin').addEventListener('click',function(){
 					var isAdmin = confirm("관리자 입니까?");
 					if(isAdmin){
 						var password = prompt("관리자 비밀번호를 입력하세요.");
@@ -58,19 +55,31 @@
 						domain : 'common'}
 						);
 				});	
-				document.getElementById("moveLogin").addEventListener('click',function(){ //콜백함수
-					router.move({context : x,
-						domain : 'member',
-						action : 'move',
-						page : 'login'});
-				});
-
-				document.getElementById("moveJoin").addEventListener('click',function(){ 
-					router.move({context : x,
-								domain : 'member',
-								action : 'move',
-								page : 'add'});
-				});
+				if(document.getElementById("moveLogin")!=null){
+					document.getElementById("moveLogin").addEventListener('click',function(){ //콜백함수
+						router.move({context : x,
+							domain : 'member',
+							action : 'move',
+							page : 'login'});
+					});
+				}
+				if(document.getElementById("moveJoin")!=null){
+					document.getElementById("moveJoin").addEventListener('click',function(){ 
+						router.move({context : x,
+									domain : 'member',
+									action : 'move',
+									page : 'add'});
+					});
+				}
+				if(document.getElementById("goMypage")!=null){
+					document.getElementById("goMypage").addEventListener('click',function(){ 
+						router.move({context : x,
+									domain : 'member',
+									action : 'retrieve',
+									page : 'retrieve'});
+					});
+				}
+				
 			}					
 		};
 	})();
@@ -84,7 +93,7 @@
 					page : 'main',
 				});
 			},
-			main : x=>{
+			search : x=>{
 				service.addClass(
 						document.getElementById('content_search'),
 						'search_content '
@@ -128,6 +137,13 @@
 					});
 				}
 				
+			},
+			main : x=>{
+				document.getElementById("goHome").addEventListener('click',function(){ //콜백함수
+					router.move({context : x,
+						domain : 'common'}
+						);
+				});		
 			}
 		};	
 	})();
@@ -228,6 +244,16 @@
 						}
 					});
 				}
+				//logout
+				if(document.getElementById('moveLogout')!=null){
+					document.getElementById('moveLogout').addEventListener('click',function(){
+						router.move({context : x,
+							domain : 'member',
+							action : 'logout',
+							page : 'main'});
+					});
+				}
+				
 				//join
 				if(document.getElementById('JoinFormBtn')!=null){
 					document.getElementById('JoinFormBtn').addEventListener('click',function(){
@@ -264,18 +290,29 @@
 						
 					});
 				}
-				
+				document.getElementById('myPageMoveToUpdate').addEventListener('click',function(){
+					router.move({context : x,
+						domain : 'member',
+						action : 'move',
+						page : 'modify'});
+				});
+				document.getElementById('myPageMoveToDelete').addEventListener('click',function(){
+					router.move({context : x,
+						domain : 'member',
+						action : 'move',
+						page : 'remove'});
+				});
 				//update
 				var roll = document.getElementById('roll');
 				var teamId = document.getElementById('teamId');
 				
 				for(var i of document.querySelectorAll('.roll-opt')){
-					if(i.getvalue===roll.getAttribute('class')){
+					if(i.getAttribute('value')===roll.getAttribute('class')){
 						i.setAttribute("selected","selected");
 					}
 				}
 				for(var i of document.querySelectorAll('.team-opt')){
-					if(i.getvalue===teamId.getAttribute('class')){
+					if(i.getAttribute('value')===teamId.getAttribute('class')){
 						i.setAttribute("selected","selected");
 					}
 				}
@@ -306,6 +343,57 @@
 						} 
 					});
 				}	
+				//remove
+				if(document.getElementById('deleteConfirmBtn')!=null){
+					document.getElementById('deleteConfirmBtn').addEventListener('click',function(){
+						var form = document.getElementById('deleteForm');
+						if(service.nullChecker([form.password.value]).checker){
+							form.action = x+"/member.do";
+							form.method = "post";
+							
+							var node = document.createElement('input');
+							node.setAttribute("type","hidden");
+							node.setAttribute("name","action");
+							node.setAttribute("value","remove");
+							form.appendChild(node); 
+							form.submit();
+						}
+						else{
+							alert("비밀번호를 입력하세요.");
+						}
+					});
+				}
+				
+				//change page
+				document.getElementById("goHome").addEventListener('click',function(){ //콜백함수
+					router.move({context : x,
+						domain : 'common'}
+						);
+				});	
+				if(document.getElementById("goMypage")!=null){
+					document.getElementById("goMypage").addEventListener('click',function(){ 
+						router.move({context : x,
+									domain : 'member',
+									action : 'retrieve',
+									page : 'retrieve'});
+					});
+				}
+				if(document.getElementById("moveLogin")!=null){
+					document.getElementById("moveLogin").addEventListener('click',function(){ //콜백함수
+						router.move({context : x,
+							domain : 'member',
+							action : 'move',
+							page : 'login'});
+					});
+				}
+				if(document.getElementById("moveJoin")!=null){
+					document.getElementById("moveJoin").addEventListener('click',function(){ 
+						router.move({context : x,
+									domain : 'member',
+									action : 'move',
+									page : 'add'});
+					});
+				}
 			}
 		}
 	})();

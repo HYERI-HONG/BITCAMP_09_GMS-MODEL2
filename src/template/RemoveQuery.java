@@ -1,23 +1,30 @@
 package template;
+import enums.MemberQuery;
 
 public class RemoveQuery extends QueryTemplate{
 
 	@Override
 	void initialize() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("remove query들어옴");
+		map.put("sql", MemberQuery.DELETE.toString());
 	}
 
 	@Override
 	void startPlay() {
-		// TODO Auto-generated method stub
-		
+		try {
+			pstmt.setString(1, (String)map.get("userid"));
+			pstmt.setString(2, (String)map.get("pass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
-
 	@Override
 	void endPlay() {
-		// TODO Auto-generated method stub
-		
+		try {
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

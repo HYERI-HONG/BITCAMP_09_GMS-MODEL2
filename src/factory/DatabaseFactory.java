@@ -15,17 +15,7 @@ public class DatabaseFactory {
 			temp = new Oracle(driver,
 					url,(String)map.get("username"),(String)map.get("password"));
 			break;
-		case MYSQL :
-			temp = new Oracle(DBConstant.MYSQL_DRIVER,
-					DBConstant.MYSQL_CONNECTION_URL,(String)map.get("username"),(String)map.get("password"));
-			break;
-		case MARIADB :
-			temp = new Oracle(DBConstant.MARIADB_DRIVER,
-					DBConstant.MARIADB_CONNECTION_URL,(String)map.get("username"),(String)map.get("password"));
-			break;
-		case MSSQL :
-			temp = new Oracle(DBConstant.MSSQL_DRIVER,
-					DBConstant.MSSQL_CONNECTION_URL,(String)map.get("username"),(String)map.get("password"));
+		default:
 			break;
 		}
 		return temp;

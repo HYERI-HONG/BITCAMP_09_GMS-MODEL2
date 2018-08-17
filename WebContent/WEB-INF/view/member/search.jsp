@@ -53,5 +53,5 @@
 </div>
 
 <script>
-	admin.main('${context}');
+	admin.search('${context}');
 </script>

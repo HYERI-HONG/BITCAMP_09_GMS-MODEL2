@@ -3,25 +3,26 @@
 <!doctype html>
 <html lang="en">
 <jsp:include page="head.jsp"/>
-<body>
-<div id="wrapper">
-	<div id="header">
-		<jsp:include page="titleBox.jsp" />
-		<jsp:include page="loginBox.jsp" />
-		<jsp:include page="menuBox.jsp" />
-	</div>
-
-	<div id="content">
-		<jsp:include page="contentBox.jsp" />
-	</div>
-
-	<div id="footer">
-		<jsp:include page="footerBox.jsp"/>
-	</div>
-</div>
-<script>
-	common.main('${context}')
-</script>	 
-</body>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<jsp:include page="titleBox.jsp" />
+				<jsp:include page="loginBox.jsp" />
+				<jsp:include page="menuBox.jsp" />
+			</div>
+		
+			<div id="content">
+				<jsp:include page="contentBox.jsp" />
+			</div>
+		
+			<div id="footer">
+				<jsp:include page="footerBox.jsp"/>
+			</div>
+		</div>
+	
+		<script>
+			common.main('${context}')
+		</script>	 
+	</body>
 </html>
 

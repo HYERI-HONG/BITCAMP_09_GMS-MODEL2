@@ -9,5 +9,6 @@ public enum Action {
 	COUNT,
 	MOVE,
 	LOGIN,
+	LOGOUT,
 	FILEUPLOAD
 }

@@ -30,6 +30,8 @@ public class AddCommand extends Command{
 			//member.setSubject(ParamMap.getValues(request, "subject"));
 			//System.out.println("CreateCommand subject : "+ ParamMap.getValues(request, "subject"));
 			MemberServiceImpl.getInstance().add(member);
+			request.setAttribute("pagename", "login");
+			
 			break;
 		default:
 			break;

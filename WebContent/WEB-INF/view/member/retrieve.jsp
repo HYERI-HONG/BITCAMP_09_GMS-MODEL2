@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../common/head.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="contentBox">
 		<div id="mypage_content">
@@ -35,24 +36,10 @@
 				<td>${user.roll}</td>
 			</tr>
 			</table>
-			<h4 align="center"><a id='myPageMoveToUpdate'>회원 정보 수정  </a>/<a id='myPageMoveToDelete'>  회원 탈퇴</a></h4>
+			<c:if test="${from eq member}">
+				<h4 align="center"><a id='myPageMoveToUpdate'>회원 정보 수정  </a>/<a id='myPageMoveToDelete'>  회원 탈퇴</a></h4>
+			</c:if>
+			
 		</div>
 </div>
-
-
-
-<script>
-	document.getElementById('myPageMoveToUpdate').addEventListener('click',function(){
-		router.move({context : '${context}',
-			domain : 'member',
-			action : 'move',
-			page : 'modify'});
-	});
-	document.getElementById('myPageMoveToDelete').addEventListener('click',function(){
-		router.move({context : '${context}',
-			domain : 'member',
-			action : 'move',
-			page : 'remove'});
-	});
-</script>
 

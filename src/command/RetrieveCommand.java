@@ -32,6 +32,7 @@ public class RetrieveCommand extends Command {
 				 map = ImageServiceImpl.
 						getInstance().
 						retrieve(request.getParameter("clickid"));
+				 request.setAttribute("from","admin");
 			}
 			else {
 				request.setAttribute("user", 
@@ -47,9 +48,11 @@ public class RetrieveCommand extends Command {
 									getSession().
 									getAttribute("user")).
 									getUserId());
+				 request.setAttribute("from","member");
 			}
 			String imgPath = "/upload/"+(String)map.get("filename")+"."+(String)map.get("extension");
 			request.setAttribute("imgpath",imgPath);
+			
 			request.setAttribute("pagename", "retrieve");
 			break;
 		case ADMIN:

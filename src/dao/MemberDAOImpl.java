@@ -66,6 +66,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void delete(MemberBean member) {
 		System.out.println("6.MemberDAO  :  delete");
+		q= new RemoveQuery();
+		Map<String, Object> map = new HashMap<>();
+		map.put("userid", member.getUserId());
+		map.put("pass", member.getPassword());
+		q.play(map);
 	}
 	@Override
 	public MemberBean login(MemberBean bean) {

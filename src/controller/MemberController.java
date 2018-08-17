@@ -41,7 +41,7 @@ public class MemberController extends HttpServlet {
 		
 		case ADD:  
 			System.out.println("10.Controller : add");
-			Carrier.redirect(request, response,"");
+			Carrier.forward(request, response);
 			break;
 		case SEARCH:case RETRIEVE:
 			System.out.println("10.Controller : search/retrieve");
@@ -66,6 +66,9 @@ public class MemberController extends HttpServlet {
 			}else {
 				Carrier.redirect(request, response,"/member.do?action=move&page=login");
 			}
+			break;
+		case LOGOUT:
+			Carrier.redirect(request, response,"");
 			break;
 		case FILEUPLOAD:
 			System.out.println("10.Controller : File upload");

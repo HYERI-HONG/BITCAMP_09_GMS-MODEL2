@@ -33,6 +33,10 @@ public class Commander{
 			System.out.println("3.commander : login");
 			cmd = new LoginCommand(request);
 			break;
+		case LOGOUT :
+			System.out.println("3.commander : logout");
+			cmd = new LogoutCommand(request);
+			break;
 		case MOVE:
 			System.out.println("3.commander : Move");
 			cmd = new MoveCommand(request);
